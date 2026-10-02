@@ -1,20 +1,21 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CADENAS, cadenaPorId, type Norma } from "@/lib/cadenas";
 import { calcularMaterial, calcularPinon, Z_MAX, Z_MIN, type Hileras } from "@/lib/calculo";
 import { grados, kg, largo, unidad, type Unidad } from "@/lib/formato";
-import { DibujoPinon } from "./DibujoPinon";
+import { DibujoMedicion, DibujoPinon } from "./DibujoPinon";
+import { Icono } from "./Iconos";
 
 type Grupo = "diametros" | "control" | "dentado" | "perfil" | "cubo" | "material";
 
-const GRUPOS: { id: Grupo; titulo: string }[] = [
-  { id: "diametros", titulo: "Diámetros" },
-  { id: "control", titulo: "Control y medición" },
-  { id: "dentado", titulo: "Ancho del dentado" },
-  { id: "perfil", titulo: "Perfil del diente" },
-  { id: "cubo", titulo: "Cubo" },
-  { id: "material", titulo: "Material y peso" },
+const GRUPOS: { id: Grupo; titulo: string; icono: string }[] = [
+  { id: "diametros", titulo: "Diámetros", icono: "diametro" },
+  { id: "control", titulo: "Control y medición", icono: "calibre" },
+  { id: "dentado", titulo: "Ancho del dentado", icono: "ancho" },
+  { id: "perfil", titulo: "Perfil del diente", icono: "diente" },
+  { id: "cubo", titulo: "Cubo", icono: "cubo" },
+  { id: "material", titulo: "Material y peso", icono: "peso" },
 ];
 
 export function Calculadora({ cadenaInicial = "08b", zInicial = 20 }: { cadenaInicial?: string; zInicial?: number }) {
@@ -93,14 +94,40 @@ export function Calculadora({ cadenaInicial = "08b", zInicial = 20 }: { cadenaIn
 
   const L = (mm: number) => largo(mm, u);
   const U = unidad(u);
+  const titulo = `Piñón ${cadena.medida} · Z${zValido}${hileras > 1 ? ` · ${hileras === 2 ? "doble" : "triple"}` : ""}`;
+  const normaTxt = `${cadena.norma === "ISO" ? "ISO 606 / DIN 8187" : "ANSI B29.1"} · ${cadena.codigo}${cadena.equivalente ? ` (${cadena.equivalente})` : ""}`;
+
+  const textoMedidas = () =>
+    [
+      titulo,
+      normaTxt,
+      `Dp: ${L(r.dp)} ${U}`,
+      `De: ${L(r.deRec)} ${U} (norma ${L(r.deMin)}–${L(r.deMax)})`,
+      `Df: ${L(r.df)} ${U}`,
+      `Medida pie de metro: ${L(r.dCalibre)} ${U}`,
+      `Medida sobre rodillos: ${L(r.mRodillos)} ${U}`,
+      `Ancho diente: ${L(r.bf1)} ${U}${hileras > 1 ? ` · total ${L(r.bfTotal)} ${U}` : ""}`,
+      `Cubo máx: ${L(r.dCuboMax)} ${U}`,
+      window.location.href,
+    ].join("\n");
 
   return (
     <div className="calc">
-      {/* ── Paso 1–3: selección ── */}
-      <section className="panel seleccion" aria-label="Datos del piñón">
+      {/* ── Parámetros ── */}
+      <section className="panel seleccion" aria-label="Parámetros de la cadena">
+        <header className="panel-cab">
+          <span className="panel-ico"><Icono n="ajustes" size={22} /></span>
+          <div>
+            <h2>Parámetros de la cadena</h2>
+            <p>Elige la cadena y el número de dientes para calcular el piñón.</p>
+          </div>
+        </header>
+
         <div className="campo">
-          <span className="etq"><b>1</b> Norma de la cadena</span>
-          <div className="seg" role="radiogroup">
+          <span className="etq"><b>1</b> Norma de la cadena
+            <Ayuda texto="ISO/DIN serie B es la cadena europea. ASA/ANSI serie A es la americana. Para el mismo paso cambian el rodillo y el ancho." />
+          </span>
+          <div className="seg" role="radiogroup" aria-label="Norma">
             {(["ISO", "ASA"] as Norma[]).map((n) => (
               <button key={n} role="radio" aria-checked={norma === n} className={norma === n ? "on" : ""} onClick={() => cambiarNorma(n)}>
                 {n === "ISO" ? "ISO / DIN (europea, B)" : "ASA / ANSI (americana, A)"}
@@ -110,14 +137,19 @@ export function Calculadora({ cadenaInicial = "08b", zInicial = 20 }: { cadenaIn
         </div>
 
         <div className="campo">
-          <label className="etq" htmlFor="cadena"><b>2</b> Paso de la cadena</label>
-          <select id="cadena" value={cadena.id} onChange={(e) => setCadenaId(e.target.value)}>
-            {cadenas.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.medida} — {c.codigo}{c.equivalente ? ` / ${c.equivalente}` : ""} (p = {c.p} mm)
-              </option>
-            ))}
-          </select>
+          <label className="etq" htmlFor="cadena"><b>2</b> Paso de la cadena
+            <Ayuda texto="Paso × ancho interior, como se pide en el taller. Entre paréntesis, el paso en mm." />
+          </label>
+          <div className="select">
+            <select id="cadena" value={cadena.id} onChange={(e) => setCadenaId(e.target.value)}>
+              {cadenas.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.medida} — {c.codigo}{c.equivalente ? ` / ${c.equivalente}` : ""} (p = {c.p} mm)
+                </option>
+              ))}
+            </select>
+            <Icono n="chevron" size={18} />
+          </div>
         </div>
 
         <div className="campo">
@@ -132,7 +164,7 @@ export function Calculadora({ cadenaInicial = "08b", zInicial = 20 }: { cadenaIn
 
         <div className="fila2">
           <div className="campo">
-            <span className="etq">Hileras</span>
+            <span className="etq etq-ico"><Icono n="capas" size={17} /> Hileras</span>
             <div className="seg chico">
               {([1, 2, 3] as Hileras[]).map((h) => (
                 <button key={h} className={hileras === h ? "on" : ""} onClick={() => setHileras(h)}>
@@ -142,7 +174,7 @@ export function Calculadora({ cadenaInicial = "08b", zInicial = 20 }: { cadenaIn
             </div>
           </div>
           <div className="campo">
-            <span className="etq">Unidades</span>
+            <span className="etq etq-ico"><Icono n="regla" size={17} /> Unidades</span>
             <div className="seg chico">
               <button className={u === "mm" ? "on" : ""} onClick={() => setU("mm")}>mm</button>
               <button className={u === "in" ? "on" : ""} onClick={() => setU("in")}>pulgadas</button>
@@ -150,34 +182,38 @@ export function Calculadora({ cadenaInicial = "08b", zInicial = 20 }: { cadenaIn
           </div>
         </div>
 
-        <div className="cadena-datos">
-          <span>Cadena: <b>{cadena.codigo}</b></span>
-          <span>Paso <b>{L(cadena.p)}</b></span>
-          <span>Rodillo Ø <b>{L(cadena.d1)}</b></span>
-          <span>Ancho int. <b>{L(cadena.b1)}</b></span>
-          {hileras > 1 && <span>Paso transv. <b>{L(cadena.pt)}</b></span>}
-          <span className="u">{U}</span>
-        </div>
-
-        <div className="dibujo">
-          <DibujoPinon p={cadena.p} z={zValido} d1={cadena.d1} dp={r.dp} de={r.deRec} df={r.df} />
+        <div className="vista">
+          <div className="vista-datos">
+            <span className="vista-tit">Vista previa del piñón</span>
+            <dl>
+              <div><dt>Cadena</dt><dd>{cadena.codigo}</dd></div>
+              <div><dt>Paso</dt><dd>{L(cadena.p)} {U}</dd></div>
+              <div><dt>Rodillo Ø</dt><dd>{L(cadena.d1)} {U}</dd></div>
+              <div><dt>Ancho int.</dt><dd>{L(cadena.b1)} {U}</dd></div>
+              {hileras > 1 && <div><dt>Paso transv.</dt><dd>{L(cadena.pt)} {U}</dd></div>}
+            </dl>
+          </div>
+          <DibujoPinon z={zValido} p={cadena.p} d1={cadena.d1} dp={r.dp} de={r.deRec} df={r.df}
+            dCubo={conCubo ? dCuboEf : undefined} agujero={agujeroEf} />
         </div>
       </section>
 
       {/* ── Resultados ── */}
-      <section className="resultados" aria-label="Medidas calculadas">
+      <section className="panel resultados" aria-label="Medidas calculadas">
         <div className="resumen">
-          <div>
-            <h2>Piñón {cadena.medida} · Z{zValido}{hileras > 1 ? ` · ${hileras === 2 ? "doble" : "triple"}` : ""}</h2>
-            <p>{cadena.norma === "ISO" ? "ISO 606 / DIN 8187" : "ANSI B29.1"} · {cadena.codigo}{cadena.equivalente ? ` (${cadena.equivalente})` : ""}</p>
+          <span className="resumen-ico"><Icono n="engranaje" size={34} /></span>
+          <div className="resumen-txt">
+            <h2>{titulo}</h2>
+            <p>{normaTxt}</p>
           </div>
-          <button className="btn-imprimir" onClick={() => window.print()}>Imprimir ficha</button>
+          <MenuFicha texto={textoMedidas} />
         </div>
 
-        <div className="chips no-print" aria-label="Elegir qué datos mostrar">
+        <div className="chips no-print" role="group" aria-label="Elegir qué datos mostrar">
           {GRUPOS.map((g) => (
             <label key={g.id} className={`chip ${visibles.has(g.id) ? "on" : ""}`}>
               <input type="checkbox" checked={visibles.has(g.id)} onChange={() => toggle(g.id)} />
+              <Icono n={g.icono} size={17} />
               {g.titulo}
             </label>
           ))}
@@ -185,7 +221,7 @@ export function Calculadora({ cadenaInicial = "08b", zInicial = 20 }: { cadenaIn
 
         <div className="tarjetas">
           {visibles.has("diametros") && (
-            <Tarjeta titulo="Diámetros" unidad={U}>
+            <Tarjeta titulo="Diámetros" icono="diametro" unidad={U}>
               <Dato nombre="Diámetro primitivo" sim="Dp" valor={L(r.dp)} destacado />
               <Dato nombre="Diámetro exterior (torneado)" sim="De" valor={L(r.deRec)} destacado />
               <Dato nombre="De mínimo / máximo norma" sim="" valor={`${L(r.deMin)} – ${L(r.deMax)}`} />
@@ -195,17 +231,18 @@ export function Calculadora({ cadenaInicial = "08b", zInicial = 20 }: { cadenaIn
           )}
 
           {visibles.has("control") && (
-            <Tarjeta titulo="Control y medición" unidad={U}>
+            <Tarjeta titulo="Control y medición" icono="calibre" unidad={U}>
               <Dato nombre={zValido % 2 === 0 ? "Medida con pie de metro (Z par = Df)" : "Medida con pie de metro (Z impar)"} sim="Mc" valor={L(r.dCalibre)} destacado />
-              <Dato nombre={`Medida sobre rodillos Ø ${L(cadena.d1)}`} sim="MR" valor={L(r.mRodillos)} />
+              <Dato nombre={`Medida sobre rodillos Ø ${L(cadena.d1)}`} sim="MR" valor={L(r.mRodillos)} destacado />
               <p className="nota">{zValido % 2 === 0
                 ? "Z par: se mide de fondo a fondo de dientes opuestos."
                 : "Z impar: no hay dientes opuestos; se mide de un fondo al fondo más cercano al otro lado."}</p>
+              <div className="medicion"><DibujoMedicion z={zValido} dp={r.dp} de={r.deRec} d1={cadena.d1} /></div>
             </Tarjeta>
           )}
 
           {visibles.has("dentado") && (
-            <Tarjeta titulo="Ancho del dentado" unidad={U}>
+            <Tarjeta titulo="Ancho del dentado" icono="ancho" unidad={U}>
               <Dato nombre="Ancho de diente (por hilera)" sim="bf1" valor={L(r.bf1)} destacado />
               {hileras > 1 && <Dato nombre={`Ancho total ${hileras} hileras`} sim="bfn" valor={L(r.bfTotal)} destacado />}
               {hileras > 1 && <Dato nombre="Paso transversal" sim="pt" valor={L(cadena.pt)} />}
@@ -215,7 +252,7 @@ export function Calculadora({ cadenaInicial = "08b", zInicial = 20 }: { cadenaIn
           )}
 
           {visibles.has("perfil") && (
-            <Tarjeta titulo="Perfil del diente (ISO 606)" unidad={U}>
+            <Tarjeta titulo="Perfil del diente (ISO 606)" icono="diente" unidad={U}>
               <Dato nombre="Radio de asiento del rodillo" sim="ri" valor={`${L(r.riMin)} – ${L(r.riMax)}`} />
               <Dato nombre="Radio de flanco" sim="re" valor={`${L(r.reMin)} – ${L(r.reMax)}`} />
               <Dato nombre="Ángulo de asiento" sim="α" valor={`${grados(r.alfaMin)} – ${grados(r.alfaMax)}`} />
@@ -223,7 +260,7 @@ export function Calculadora({ cadenaInicial = "08b", zInicial = 20 }: { cadenaIn
           )}
 
           {visibles.has("cubo") && (
-            <Tarjeta titulo="Cubo" unidad={U}>
+            <Tarjeta titulo="Cubo" icono="cubo" unidad={U}>
               <Dato nombre="Diámetro máximo de cubo" sim="Dg máx" valor={L(r.dCuboMax)} destacado />
               <div className="entradas">
                 <label className="check"><input type="checkbox" checked={conCubo} onChange={(e) => setConCubo(e.target.checked)} /> Piñón con cubo (si no, es corona/disco)</label>
@@ -240,7 +277,7 @@ export function Calculadora({ cadenaInicial = "08b", zInicial = 20 }: { cadenaIn
           )}
 
           {visibles.has("material") && (
-            <Tarjeta titulo="Material de partida (acero)" unidad="">
+            <Tarjeta titulo="Material de partida (acero)" icono="peso" unidad="">
               <div className="entradas">
                 <label>Sobremedida de mecanizado (mm)
                   <input type="number" min={0} step={0.5} value={sobremedida} onChange={(e) => setSobremedida(Number(e.target.value) || 0)} />
@@ -264,11 +301,68 @@ export function Calculadora({ cadenaInicial = "08b", zInicial = 20 }: { cadenaIn
   );
 }
 
-function Tarjeta({ titulo, unidad, children }: { titulo: string; unidad: string; children: React.ReactNode }) {
+function MenuFicha({ texto }: { texto: () => string }) {
+  const [abierto, setAbierto] = useState(false);
+  const [aviso, setAviso] = useState("");
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!abierto) return;
+    const cerrar = (e: MouseEvent | KeyboardEvent) => {
+      if (e instanceof KeyboardEvent ? e.key === "Escape" : !ref.current?.contains(e.target as Node)) setAbierto(false);
+    };
+    document.addEventListener("mousedown", cerrar);
+    document.addEventListener("keydown", cerrar);
+    return () => {
+      document.removeEventListener("mousedown", cerrar);
+      document.removeEventListener("keydown", cerrar);
+    };
+  }, [abierto]);
+
+  const copiar = async (t: string, msg: string) => {
+    setAbierto(false);
+    try {
+      await navigator.clipboard.writeText(t);
+      setAviso(msg);
+    } catch {
+      setAviso("No se pudo copiar");
+    }
+    setTimeout(() => setAviso(""), 2000);
+  };
+
+  return (
+    <div className="ficha no-print" ref={ref}>
+      <div className="ficha-btns">
+        <button className="btn-prim" onClick={() => window.print()}><Icono n="impresora" size={18} /> Imprimir ficha</button>
+        <button className="btn-prim btn-mas" aria-label="Más opciones" aria-haspopup="menu" aria-expanded={abierto} onClick={() => setAbierto((a) => !a)}>
+          <Icono n="chevron" size={18} />
+        </button>
+      </div>
+      {abierto && (
+        <div className="menu" role="menu">
+          <button role="menuitem" onClick={() => copiar(window.location.href, "Enlace copiado")}><Icono n="enlace" size={17} /> Copiar enlace</button>
+          <button role="menuitem" onClick={() => copiar(texto(), "Medidas copiadas")}><Icono n="copiar" size={17} /> Copiar medidas (texto)</button>
+        </div>
+      )}
+      {aviso && <span className="toast" role="status"><Icono n="check" size={16} /> {aviso}</span>}
+    </div>
+  );
+}
+
+function Ayuda({ texto }: { texto: string }) {
+  return (
+    <span className="ayuda" tabIndex={0} aria-label={texto}>
+      <Icono n="info" size={15} />
+      <span className="ayuda-txt" role="tooltip">{texto}</span>
+    </span>
+  );
+}
+
+function Tarjeta({ titulo, icono, unidad, children }: { titulo: string; icono: string; unidad: string; children: React.ReactNode }) {
   return (
     <article className="tarjeta">
       <header>
-        <h3>{titulo}</h3>
+        <h3><Icono n={icono} size={20} className="tarjeta-ico" />{titulo}</h3>
         {unidad && <span className="u">{unidad}</span>}
       </header>
       <dl>{children}</dl>
