@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   description:
     "Calcula gratis todas las medidas de un piñón para cadena de rodillos: diámetro primitivo, exterior, de fondo, ancho de diente y material. Normas ISO 606 / DIN 8187 y ANSI (ASA), en mm y pulgadas.",
   openGraph: { type: "website", locale: "es_CL", siteName: SITIO.nombre },
+  // Search Console (no quitar: Google la revisa periódicamente)
+  verification: { google: "LeXq9zOw8soEpK4bv8jos1elTcCdE82V7t6vllzq5QY" },
 };
 
 export const viewport: Viewport = {
