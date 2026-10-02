@@ -1,6 +1,15 @@
 import { Calculadora } from "@/components/Calculadora";
 import { Icono } from "@/components/Iconos";
 
+const FOTOS = [
+  { src: "taller-pinones-eje.jpg", alt: "Piñones montados en eje", w: 760, h: 570, clase: "ancha" },
+  { src: "taller-pinon-simple.jpg", alt: "Piñón para cadena simple", w: 570, h: 760, clase: "" },
+  { src: "taller-engranajes.jpg", alt: "Engranajes rectos", w: 427, h: 760, clase: "" },
+  { src: "taller-eje-pinones.jpg", alt: "Eje con piñones, pintado", w: 428, h: 760, clase: "" },
+  { src: "taller-torneado.jpg", alt: "Torneado del cubo", w: 570, h: 760, clase: "" },
+  { src: "taller-cnc.jpg", alt: "Mecanizado en centro CNC", w: 760, h: 570, clase: "ancha" },
+];
+
 export default function Inicio() {
   return (
     <>
@@ -20,6 +29,23 @@ export default function Inicio() {
       </section>
 
       <Calculadora />
+
+      <section className="taller" aria-labelledby="taller-tit">
+        <div className="taller-cab">
+          <span className="ceja">Del taller</span>
+          <h2 id="taller-tit">Piezas reales fabricadas en maestranza</h2>
+          <p>Piñones, ejes y engranajes hechos a medida: del cálculo al torno y al centro de mecanizado.</p>
+        </div>
+        <div className="galeria">
+          {FOTOS.map((f) => (
+            <figure key={f.src} className={f.clase}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`/img/${f.src}`} alt={f.alt} width={f.w} height={f.h} loading="lazy" />
+              <figcaption>{f.alt}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
 
       <section className="texto">
         <h2>Preguntas frecuentes</h2>
