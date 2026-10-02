@@ -1,12 +1,12 @@
 import { Calculadora } from "@/components/Calculadora";
-import { HeroIlustracion } from "@/components/HeroIlustracion";
 import { Icono } from "@/components/Iconos";
 
 export default function Inicio() {
   return (
     <>
       <section className="hero">
-        <HeroIlustracion />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="hero-foto" src="/img/pinon.jpg" alt="" width={760} height={570} fetchPriority="high" />
         <div className="hero-txt">
           <span className="ceja">Diseño y cálculo</span>
           <h1>Calculadora de piñones para cadena</h1>

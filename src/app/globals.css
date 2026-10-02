@@ -84,7 +84,14 @@ main { max-width: 1240px; margin: 0 auto; padding: 0 20px 56px; }
 
 /* ── Hero ── */
 .hero { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 40px 0 34px; min-height: 230px; isolation: isolate; }
-.hero-ilu { position: absolute; z-index: -1; top: 0; bottom: 0; right: 230px; width: min(46%, 560px); height: 100%; pointer-events: none; }
+.hero-foto {
+  position: absolute; z-index: -1; top: -8px; bottom: -8px; right: 230px; width: min(50%, 620px); height: calc(100% + 16px);
+  object-fit: cover; object-position: 50% 45%; pointer-events: none;
+  filter: brightness(0.72) contrast(1.1) saturate(0.9);
+  -webkit-mask-image: radial-gradient(closest-side at 55% 50%, #000 45%, transparent 100%);
+  mask-image: radial-gradient(closest-side at 55% 50%, #000 45%, transparent 100%);
+}
+:root[data-theme="light"] .hero-foto { filter: none; }
 .hero-txt { max-width: 640px; }
 .ceja { display: block; color: var(--acento); font-size: 12.5px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 700; margin-bottom: 10px; }
 .hero h1 { font-size: clamp(30px, 4.6vw, 48px); font-weight: 800; letter-spacing: -0.03em; }
@@ -96,10 +103,10 @@ main { max-width: 1240px; margin: 0 auto; padding: 0 20px 56px; }
 .hero-puntos span { display: block; font-size: 13px; color: var(--ink-2); }
 @media (max-width: 1000px) {
   .hero { grid-template-columns: 1fr; }
-  .hero-ilu { right: -80px; width: 70%; opacity: 0.55; }
+  .hero-foto { right: -40px; width: 60%; opacity: 0.5; }
   .hero-puntos { display: none; }
 }
-@media (max-width: 560px) { .hero { padding: 26px 0 22px; min-height: 0; } .hero-ilu { opacity: 0.3; width: 110%; right: -45%; } .hero-txt p { font-size: 15.5px; } }
+@media (max-width: 560px) { .hero { padding: 26px 0 22px; min-height: 0; } .hero-foto { opacity: 0.28; width: 95%; right: -35%; } .hero-txt p { font-size: 15.5px; } }
 
 /* ── Paneles ── */
 .calc { display: grid; grid-template-columns: minmax(320px, 420px) 1fr; gap: 20px; align-items: start; }
