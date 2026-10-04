@@ -5,6 +5,12 @@ import { SITIO } from "@/lib/sitio";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const rutas = ["/", "/tablas/", "/cadenas/", ...CADENAS.map((c) => `/tablas/${c.id}/`)];
-  return rutas.map((r) => ({ url: `${SITIO.url}${r}` }));
+  const fecha = new Date(); // fecha del build = última publicación
+  const rutas: [string, number][] = [
+    ["/", 1],
+    ["/tablas/", 0.8],
+    ["/cadenas/", 0.7],
+    ...CADENAS.map((c): [string, number] => [`/tablas/${c.id}/`, 0.6]),
+  ];
+  return rutas.map(([r, prioridad]) => ({ url: `${SITIO.url}${r}`, lastModified: fecha, priority: prioridad }));
 }
