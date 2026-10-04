@@ -10,12 +10,19 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--f-mono", display:
 export const metadata: Metadata = {
   metadataBase: new URL(SITIO.url),
   title: {
-    default: `${SITIO.nombre} — Calculadora de piñones para cadena ISO y ASA`,
+    default: "Calculadora de Piñones para Cadena: Olvida el Catálogo",
     template: `%s | ${SITIO.nombre}`,
   },
   description:
-    "Calcula gratis todas las medidas de un piñón para cadena de rodillos: diámetro primitivo, exterior, de fondo, ancho de diente y material. Normas ISO 606 / DIN 8187 y ANSI (ASA), en mm y pulgadas.",
-  openGraph: { type: "website", locale: "es_CL", siteName: SITIO.nombre },
+    "¿Aún buscas medidas en un catálogo de papel? Elige paso y Z y obtén Dp, De, Df, cubo, ancho de diente y material de corte. ISO y ASA, mm y pulgadas. Gratis.",
+  openGraph: {
+    type: "website",
+    locale: "es_CL",
+    siteName: SITIO.nombre,
+    title: "Calculadora de Piñones para Cadena: Olvida el Catálogo",
+    description: "Elige paso y Z: todas las medidas del piñón al instante. ISO y ASA, mm y pulgadas. Gratis.",
+    images: [{ url: "/img/pinon.jpg", width: 760, height: 570 }],
+  },
   // Search Console (no quitar: Google la revisa periódicamente)
   verification: { google: "LeXq9zOw8soEpK4bv8jos1elTcCdE82V7t6vllzq5QY" },
 };

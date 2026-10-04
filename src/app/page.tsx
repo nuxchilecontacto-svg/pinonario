@@ -1,5 +1,8 @@
+import type { Metadata } from "next";
 import { Calculadora } from "@/components/Calculadora";
 import { Icono } from "@/components/Iconos";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 const FOTOS = [
   { src: "taller-pinones-eje.jpg", alt: "Piñones montados en eje", w: 760, h: 570, clase: "ancha" },

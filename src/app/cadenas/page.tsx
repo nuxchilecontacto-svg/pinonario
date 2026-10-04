@@ -4,8 +4,10 @@ import { CADENAS } from "@/lib/cadenas";
 import { largo } from "@/lib/formato";
 
 export const metadata: Metadata = {
-  title: "Medidas de cadenas de rodillos ISO y ASA",
-  description: "Paso, diámetro de rodillo, ancho interior y paso transversal de cadenas de rodillos europeas (ISO 606 / DIN 8187) y americanas (ANSI / ASA).",
+  title: { absolute: "¿08B o ASA 40? Identifica tu Cadena de Rodillos" },
+  description:
+    "Parecen iguales, pero un piñón para 08B no siempre sirve en ASA 40. Mide paso y rodillo y compáralos con las medidas de 24 cadenas ISO y ASA.",
+  alternates: { canonical: "/cadenas/" },
 };
 
 export default function Cadenas() {

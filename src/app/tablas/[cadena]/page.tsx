@@ -16,9 +16,12 @@ type Props = { params: Promise<{ cadena: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const c = cadenaPorId((await params).cadena);
   if (!c) return {};
+  // Gancho con un dato real: el Z20 de esa cadena
+  const z20 = calcularPinon(c, 20);
+  const L = (n: number) => largo(n, "mm");
   return {
-    title: `Tabla de piñones ${c.medida} ${c.codigo}${c.equivalente ? ` / ${c.equivalente}` : ""} — Z 8 a 120`,
-    description: `Diámetro primitivo, exterior y de fondo de piñones para cadena ${c.codigo} (${c.medida}, paso ${c.p} mm) de 8 a 120 dientes, según ${c.norma === "ISO" ? "ISO 606 / DIN 8187" : "ANSI B29.1"}.`,
+    title: { absolute: `Tabla Piñón ${c.codigo} ${c.medida}: Z8 a Z120 Listo para Tornear` },
+    description: `¿Piñón ${c.codigo} de 20 dientes? Dp ${L(z20.dp)} mm y De ${L(z20.deRec)} mm. Aquí tienes Z8 a Z120 con diámetros, medida de control y cubo máximo, sin hojear catálogos.`,
     alternates: { canonical: `/tablas/${c.id}/` },
   };
 }
