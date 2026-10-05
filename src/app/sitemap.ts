@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/tablas/", 0.8],
     ["/transmision/", 0.9],
     ["/identificar/", 0.9],
+    ["/engranajes/", 0.9],
+    ["/cremalleras/", 0.8],
     ["/cadenas/", 0.7],
     ...CADENAS.map((c): [string, number] => [`/tablas/${c.id}/`, 0.6]),
   ];

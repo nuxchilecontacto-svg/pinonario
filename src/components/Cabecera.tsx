@@ -9,6 +9,8 @@ const NAV = [
   { href: "/", txt: "Calculadora" },
   { href: "/transmision/", txt: "Largo de cadena" },
   { href: "/identificar/", txt: "Identificar" },
+  { href: "/engranajes/", txt: "Engranajes" },
+  { href: "/cremalleras/", txt: "Cremalleras" },
   { href: "/tablas/", txt: "Tablas" },
   { href: "/cadenas/", txt: "Cadenas" },
 ];
