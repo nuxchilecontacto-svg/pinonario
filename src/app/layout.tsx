@@ -24,7 +24,8 @@ export const metadata: Metadata = {
     images: [{ url: "/img/pinon.jpg", width: 760, height: 570 }],
   },
   // Search Console (no quitar: Google la revisa periódicamente)
-  verification: { google: "LeXq9zOw8soEpK4bv8jos1elTcCdE82V7t6vllzq5QY" },
+  // [pinonario.pages.dev, pinonario.com]
+  verification: { google: ["LeXq9zOw8soEpK4bv8jos1elTcCdE82V7t6vllzq5QY", "3-mqe_6EDN8KwlzHvSTPxtr8etZJHlk2NJ179r6gt2A"] },
 };
 
 export const viewport: Viewport = {
