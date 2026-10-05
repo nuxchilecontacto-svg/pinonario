@@ -7,6 +7,7 @@ import { Icono } from "./Iconos";
 
 const NAV = [
   { href: "/", txt: "Calculadora" },
+  { href: "/transmision/", txt: "Largo de cadena" },
   { href: "/tablas/", txt: "Tablas" },
   { href: "/cadenas/", txt: "Cadenas" },
 ];

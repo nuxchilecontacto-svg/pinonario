@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const rutas: [string, number][] = [
     ["/", 1],
     ["/tablas/", 0.8],
+    ["/transmision/", 0.9],
     ["/cadenas/", 0.7],
     ...CADENAS.map((c): [string, number] => [`/tablas/${c.id}/`, 0.6]),
   ];

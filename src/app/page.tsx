@@ -33,6 +33,15 @@ export default function Inicio() {
 
       <Calculadora />
 
+      <a href="/transmision/" className="cta-herramienta">
+        <Icono n="cadena" size={30} />
+        <div>
+          <b>¿Cuántos eslabones lleva la cadena?</b>
+          <span>Calcula el largo de cadena, la distancia exacta entre ejes, la relación y las RPM de tu transmisión.</span>
+        </div>
+        <span className="cta-flecha">Calcular largo de cadena →</span>
+      </a>
+
       <section className="taller" aria-labelledby="taller-tit">
         <div className="taller-cab">
           <span className="ceja">Del taller</span>

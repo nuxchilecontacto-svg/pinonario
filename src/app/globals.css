@@ -138,9 +138,9 @@ main { max-width: 1240px; margin: 0 auto; padding: 0 20px 56px; }
 
 .select { position: relative; }
 .select svg { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--ink-2); }
-select, input[type="number"] { font: inherit; color: var(--ink); background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; width: 100%; min-width: 0; }
+select, input[type="number"], input[type="text"] { font: inherit; color: var(--ink); background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; width: 100%; min-width: 0; }
 select { appearance: none; padding-right: 38px; font-weight: 600; cursor: pointer; }
-select:hover, input[type="number"]:hover { border-color: var(--line-2); }
+select:hover, input[type="number"]:hover, input[type="text"]:hover { border-color: var(--line-2); }
 select:focus, input:focus, button:focus-visible, .chip:has(input:focus-visible) { outline: 2px solid var(--acento); outline-offset: 1px; }
 
 .zfila { display: grid; grid-template-columns: 56px 1fr 56px; gap: 8px; }
@@ -174,6 +174,34 @@ select:focus, input:focus, button:focus-visible, .chip:has(input:focus-visible) 
 .cota .cota-ext, .cota-ext { stroke: var(--ink-3); stroke-width: 0.8; opacity: 0.7; fill: none; }
 .cota text { fill: var(--ink); font-family: var(--f-mono), monospace; font-weight: 600; }
 .cota-flecha { fill: var(--ink-2); }
+
+.cta-herramienta { display: flex; align-items: center; gap: 18px; margin-top: 22px; padding: 18px 22px; border-radius: 14px; border: 1px solid var(--acento-borde); background: var(--acento-suave); text-decoration: none; transition: background 0.15s; }
+.cta-herramienta:hover { background: color-mix(in srgb, var(--acento) 20%, transparent); }
+.cta-herramienta > svg { color: var(--acento); flex: none; }
+.cta-herramienta b { display: block; font-size: 17px; }
+.cta-herramienta span { color: var(--ink-2); font-size: 14px; }
+.cta-herramienta .cta-flecha { margin-left: auto; color: var(--acento); font-weight: 700; white-space: nowrap; }
+@media (max-width: 640px) { .cta-herramienta { flex-wrap: wrap; } .cta-herramienta .cta-flecha { margin-left: 48px; } }
+
+/* Calculadora de transmisión */
+.intro .ceja { margin-bottom: 8px; }
+.intro { padding-top: 32px; }
+.fila2.iguales { grid-template-columns: 1fr 1fr; }
+.num-grande { font-family: var(--f-mono), monospace; font-size: 22px !important; font-weight: 700; text-align: center; padding: 8px !important; }
+.vista-trans { grid-template-columns: 1fr; }
+.d-cadena { fill: none; stroke: var(--acento); stroke-width: 3; stroke-dasharray: 2 3; stroke-linecap: round; }
+.d-eje-trans { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 6 4; }
+.d-txt { fill: var(--ink-2); font-family: var(--f-mono), monospace; font-weight: 700; }
+.tarjeta-avisos { grid-column: 1 / -1; }
+.avisos { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.avisos li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; padding: 10px 12px; border-radius: 9px; border: 1px solid var(--line); background: var(--panel-2); }
+.avisos li svg { flex: none; margin-top: 2px; }
+.aviso-ok svg { color: #3fb27f; }
+.aviso-ojo { border-color: rgba(240, 180, 60, 0.45) !important; }
+.aviso-ojo svg { color: #e6a93a; }
+.aviso-mal { border-color: rgba(255, 110, 90, 0.5) !important; }
+.aviso-mal svg { color: var(--alerta); }
+.tarjeta .nota a { color: var(--acento); }
 
 .corte { border-top: 1px solid var(--line); padding-top: 16px; display: flex; flex-direction: column; gap: 10px; }
 .btn-dxf { display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%; font-size: 14.5px; font-weight: 700; padding: 12px; border-radius: 10px; cursor: pointer; border: 1px solid var(--acento-borde); background: var(--acento-suave); color: var(--ink); }
