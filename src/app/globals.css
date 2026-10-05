@@ -183,6 +183,33 @@ select:focus, input:focus, button:focus-visible, .chip:has(input:focus-visible) 
 .cta-herramienta .cta-flecha { margin-left: auto; color: var(--acento); font-weight: 700; white-space: nowrap; }
 @media (max-width: 640px) { .cta-herramienta { flex-wrap: wrap; } .cta-herramienta .cta-flecha { margin-left: 48px; } }
 
+/* Identificador */
+.seg.modo { max-width: 520px; margin-bottom: 16px; }
+.seg.modo button { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 8px; font-size: 14.5px; }
+.esquema { width: 100%; height: auto; background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 6px; }
+.es-placa { fill: var(--dibujo-fill); stroke: var(--dibujo); stroke-width: 1; }
+.es-placa2 { fill: var(--panel-3); stroke: var(--dibujo); stroke-width: 1; }
+.es-rodillo { fill: var(--panel); stroke: var(--ink); stroke-width: 1.2; }
+.es-ext { stroke: var(--ink-3); stroke-width: 0.8; fill: none; }
+.es-cota { stroke: var(--ink-2); stroke-width: 1.1; fill: none; }
+.es-cota.acento { stroke: var(--acento); }
+.es-txt { fill: var(--ink-2); font-size: 8px; font-family: var(--f-sans), sans-serif; font-weight: 600; }
+.es-nota { font-weight: 500; fill: var(--ink-3); }
+.mini { font-size: 12.5px; color: var(--ink-2); display: flex; flex-direction: column; gap: 4px; }
+.conf { flex: none; font-size: 12.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+.conf.chica { font-size: 11.5px; padding: 2px 9px; }
+.conf-alta { color: #3fb27f; border-color: rgba(63, 178, 127, 0.5); background: rgba(63, 178, 127, 0.1); }
+.conf-media { color: #e6a93a; border-color: rgba(230, 169, 58, 0.5); background: rgba(230, 169, 58, 0.1); }
+.conf-baja { color: var(--ink-3); border-color: var(--line-2); }
+.candidato.primero { border-color: var(--acento-borde); }
+.candidato header h3 { text-transform: none; letter-spacing: 0; font-size: 15px; }
+.marca-ico { vertical-align: -2px; }
+.marca-ok .marca-ico { color: #3fb27f; }
+.marca-ojo .marca-ico { color: #e6a93a; }
+.marca-mal .marca-ico { color: var(--alerta); }
+.vacio { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 12px; min-height: 300px; color: var(--ink-3); padding: 20px; }
+.vacio p { max-width: 40ch; color: var(--ink-2); margin: 0; }
+
 /* Calculadora de transmisión */
 .intro .ceja { margin-bottom: 8px; }
 .intro { padding-top: 32px; }

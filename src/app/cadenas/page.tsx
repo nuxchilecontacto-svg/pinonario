@@ -15,7 +15,7 @@ export default function Cadenas() {
   return (
     <div className="pagina">
       <h1>Medidas de cadenas de rodillos</h1>
-      <p className="sub">Dimensiones principales en mm. Úsalas para identificar una cadena midiendo paso y rodillo.</p>
+      <p className="sub">Dimensiones principales en mm. ¿Tienes la cadena en la mano? <a href="/identificar/">Identifícala automáticamente con tres medidas de pie de metro →</a></p>
       <div className="tabla-wrap">
         <table className="tabla">
           <thead>
