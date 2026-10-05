@@ -1,6 +1,6 @@
 // Avisa a Bing (y demás buscadores IndexNow) de todas las URLs del sitemap publicado.
 // Uso, después de que Cloudflare termine de publicar:  npm run indexnow
-const HOST = "pinonario.pages.dev";
+const HOST = "pinonario.com";
 const KEY = "17057859ddb6db57496c1c25e960f266"; // archivo public/<KEY>.txt
 
 const xml = await (await fetch(`https://${HOST}/sitemap.xml`)).text();
