@@ -175,6 +175,15 @@ select:focus, input:focus, button:focus-visible, .chip:has(input:focus-visible) 
 .cota text { fill: var(--ink); font-family: var(--f-mono), monospace; font-weight: 600; }
 .cota-flecha { fill: var(--ink-2); }
 
+.corte { border-top: 1px solid var(--line); padding-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+.btn-dxf { display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%; font-size: 14.5px; font-weight: 700; padding: 12px; border-radius: 10px; cursor: pointer; border: 1px solid var(--acento-borde); background: var(--acento-suave); color: var(--ink); }
+.btn-dxf svg { color: var(--acento); }
+.btn-dxf:hover { background: var(--acento); color: var(--acento-ink); }
+.btn-dxf:hover svg { color: var(--acento-ink); }
+.check-mini { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-2); cursor: pointer; }
+.check-mini input { accent-color: var(--acento); width: 15px; height: 15px; }
+.corte .nota { margin: 0; }
+
 /* ── Resultados ── */
 .resultados { padding: 20px; min-width: 0; }
 .resumen { display: flex; align-items: center; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }

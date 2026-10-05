@@ -11,7 +11,7 @@ export function DibujoPinon({ z, p, d1, dp, de, df, dCubo, agujero }: Props) {
   const xDp = -m * 1.22;
   const xDe = m * 1.22;
   const yDf = m * 1.3;
-  const vb = `${-m * 1.45} ${-m * 1.12} ${m * 2.9} ${m * 2.62}`;
+  const vb = `${-m * 1.62} ${-m * 1.12} ${m * 3.24} ${m * 2.62}`;
 
   return (
     <svg viewBox={vb} className="dibujo-svg" role="img" aria-label={`Vista del piñón de ${z} dientes, paso ${p} mm, con cotas`}>

@@ -58,6 +58,7 @@ const P: Record<string, React.ReactNode> = {
     </>
   ),
   check: <path d="M5 12l5 5 9-10" />,
+  descarga: <path d="M12 3v12M7 10l5 5 5-5M4 19h16" />,
   escudo: <path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6zM8.5 12l2.5 2.5 4.5-5" />,
   lapiz: <path d="M4 20l4-1 11-11-3-3L5 16zM14 7l3 3" />,
   sol: (

@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { CADENAS, cadenaPorId, type Norma } from "@/lib/cadenas";
 import { calcularMaterial, calcularPinon, Z_MAX, Z_MIN, type Hileras } from "@/lib/calculo";
+import { descargar, dxfPinon } from "@/lib/dxf";
 import { grados, kg, largo, unidad, type Unidad } from "@/lib/formato";
 import { DibujoMedicion, DibujoPinon } from "./DibujoPinon";
 import { Icono } from "./Iconos";
@@ -91,6 +92,12 @@ export function Calculadora({ cadenaInicial = "08b", zInicial = 20 }: { cadenaIn
       n.has(g) ? n.delete(g) : n.add(g);
       return n;
     });
+
+  const [dxfRefs, setDxfRefs] = useState(false);
+  const bajarDxf = () => {
+    const contenido = dxfPinon({ z: zValido, dp: r.dp, de: r.deRec, df: r.df, d1: cadena.d1, agujero: agujeroEf, referencias: dxfRefs });
+    descargar(`pinon-${cadena.codigo.replace(/\s+/g, "")}-Z${zValido}.dxf`, contenido);
+  };
 
   const L = (mm: number) => largo(mm, u);
   const U = unidad(u);
@@ -195,6 +202,17 @@ export function Calculadora({ cadenaInicial = "08b", zInicial = 20 }: { cadenaIn
           </div>
           <DibujoPinon z={zValido} p={cadena.p} d1={cadena.d1} dp={r.dp} de={r.deRec} df={r.df}
             dCubo={conCubo ? dCuboEf : undefined} agujero={agujeroEf} />
+        </div>
+
+        <div className="corte no-print">
+          <button className="btn-dxf" onClick={bajarDxf}>
+            <Icono n="descarga" size={18} /> Descargar DXF para corte
+          </button>
+          <label className="check-mini">
+            <input type="checkbox" checked={dxfRefs} onChange={(e) => setDxfRefs(e.target.checked)} />
+            Incluir círculos de referencia (Dp y Df, capa aparte)
+          </label>
+          <p className="nota">Perfil ISO 606 con arcos exactos, en mm, listo para plasma, láser, agua o CAD. Incluye el agujero de {agujeroEf} mm.</p>
         </div>
       </section>
 
