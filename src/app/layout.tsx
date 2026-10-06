@@ -64,6 +64,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div><h4>Guías</h4><ul>
               {GUIAS.map((g) => <li key={g.slug}><Link href={`/guias/${g.slug}/`}>{g.titulo}</Link></li>)}
             </ul></div>
+            <div><h4>{SITIO.nombre}</h4><ul>
+              <li><Link href="/acerca/">Acerca de</Link></li>
+              <li><Link href="/contacto/">Contacto</Link></li>
+              <li><Link href="/privacidad/">Política de privacidad</Link></li>
+            </ul></div>
           </nav>
           <div className="pie-in">
             <span>{SITIO.nombre} · Herramienta gratuita para maestranzas y talleres.</span>

@@ -16,6 +16,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/cremalleras/", 0.8],
     ["/cadenas/", 0.7],
     ["/guias/", 0.7],
+    ["/acerca/", 0.3],
+    ["/contacto/", 0.3],
+    ["/privacidad/", 0.2],
     ...GUIAS.map((g): [string, number] => [`/guias/${g.slug}/`, 0.7]),
     ...CADENAS.map((c): [string, number] => [`/tablas/${c.id}/`, 0.6]),
   ];

@@ -2,4 +2,5 @@
 export const SITIO = {
   nombre: "Piñonario",
   url: "https://pinonario.com",
+  correo: "contacto@pinonario.com",
 };
