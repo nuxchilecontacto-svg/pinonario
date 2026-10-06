@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Manrope } from "next/font/google";
+import Link from "next/link";
 import { Cabecera } from "@/components/Cabecera";
+import { GUIAS } from "@/lib/guias";
 import { SITIO } from "@/lib/sitio";
 import "./globals.css";
 
@@ -47,6 +49,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Cabecera nombre={SITIO.nombre} />
         <main>{children}</main>
         <footer className="pie no-print">
+          <nav className="pie-links" aria-label="Todas las herramientas">
+            <div><h4>Cadena de rodillos</h4><ul>
+              <li><Link href="/">Calculadora de piñones</Link></li>
+              <li><Link href="/transmision/">Largo de cadena</Link></li>
+              <li><Link href="/identificar/">Identificar cadena o piñón</Link></li>
+              <li><Link href="/tablas/">Tablas de piñones</Link></li>
+              <li><Link href="/cadenas/">Medidas de cadenas</Link></li>
+            </ul></div>
+            <div><h4>Engranajes</h4><ul>
+              <li><Link href="/engranajes/">Engranajes por módulo</Link></li>
+              <li><Link href="/cremalleras/">Cremalleras</Link></li>
+            </ul></div>
+            <div><h4>Guías</h4><ul>
+              {GUIAS.map((g) => <li key={g.slug}><Link href={`/guias/${g.slug}/`}>{g.titulo}</Link></li>)}
+            </ul></div>
+          </nav>
           <div className="pie-in">
             <span>{SITIO.nombre} · Herramienta gratuita para maestranzas y talleres.</span>
             <span>Cálculos según ISO 606 / DIN 8187 y ANSI B29.1.</span>

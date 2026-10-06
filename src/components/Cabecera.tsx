@@ -12,7 +12,7 @@ const NAV = [
   { href: "/engranajes/", txt: "Engranajes" },
   { href: "/cremalleras/", txt: "Cremalleras" },
   { href: "/tablas/", txt: "Tablas" },
-  { href: "/cadenas/", txt: "Cadenas" },
+  { href: "/guias/", txt: "Guías" },
 ];
 
 export function Cabecera({ nombre }: { nombre: string }) {
