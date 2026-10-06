@@ -29,7 +29,7 @@ export function ArticuloGuia({ guia, children, l = "es" }: { guia: Guia; childre
       <h1>{guia.titulo}</h1>
       <p className="guia-meta">{t.meta(guia.minutos)}</p>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="guia-foto" src={`/img/${guia.foto}`} alt="" width={760} height={570} />
+      <img className="guia-foto" src={`/img/${guia.foto}`} alt={guia.titulo} width={760} height={570} />
       <div className="guia-cuerpo">{children}</div>
       <aside className="guia-mas">
         <h2>{t.sigue}</h2>

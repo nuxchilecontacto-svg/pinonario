@@ -21,7 +21,7 @@ export default function Guides() {
           <li key={g.slug}>
             <Link href={`/en/guides/${g.slug}/`}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`/img/${g.foto}`} alt="" width={760} height={570} loading="lazy" />
+              <img src={`/img/${g.foto}`} alt={g.titulo} width={760} height={570} loading="lazy" />
               <div>
                 <b>{g.titulo}</b>
                 <span>{g.resumen}</span>

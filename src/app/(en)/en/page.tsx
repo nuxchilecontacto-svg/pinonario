@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <section className="hero">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="hero-foto" src="/img/pinon.jpg" alt="" width={760} height={570} fetchPriority="high" />
+        <img className="hero-foto" src="/img/pinon.jpg" alt="Machined roller chain sprocket" width={760} height={570} fetchPriority="high" />
         <div className="hero-txt">
           <span className="ceja">Design &amp; calculation</span>
           <h1>Roller chain sprocket calculator</h1>
