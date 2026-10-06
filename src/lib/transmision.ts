@@ -62,24 +62,51 @@ export function calcularTransmision(o: { p: number; z1: number; z2: number; c: n
 
 export type Aviso = { nivel: "ok" | "ojo" | "mal"; texto: string };
 
+const AV = {
+  es: {
+    muyChico: (z: number) => `Piñón de ${z} dientes: muy chico, la cadena trabaja a golpes y se desgasta rápido. Use 17 o más si puede.`,
+    chico: (z: number) => `Piñón chico de ${z} dientes: aceptable a baja velocidad. Para marcha suave se recomiendan 17 o más.`,
+    bien: (z: number) => `Piñón chico de ${z} dientes: marcha suave.`,
+    relacion: "Relación mayor a 7:1. Conviene hacerla en dos etapas.",
+    corta: (n: string) => `Distancia entre centros corta (${n} pasos). Lo ideal es 30 a 50 pasos.`,
+    larga: (n: string) => `Distancia larga (${n} pasos): use guía o tensor para que la cadena no flamee.`,
+    ideal: (n: string) => `Distancia entre centros de ${n} pasos: dentro del rango ideal (30 a 50 recomendado, hasta 80).`,
+    contacto: (g: string) => `Ángulo de contacto en el piñón chico de ${g}°: menor a 120°. Aumente la distancia o reduzca la relación.`,
+    impar: "Número impar de eslabones: necesita un medio eslabón (acodado), que debilita la cadena. Prefiera un número par.",
+    rapida: (v: string) => `Velocidad de cadena ${v} m/s: alta. Requiere buena lubricación (baño de aceite o bomba).`,
+  },
+  en: {
+    muyChico: (z: number) => `${z}-tooth sprocket: too small. The chain runs rough and wears fast. Use 17 teeth or more if possible.`,
+    chico: (z: number) => `${z}-tooth small sprocket: acceptable at low speed. For smooth running, 17 teeth or more are recommended.`,
+    bien: (z: number) => `${z}-tooth small sprocket: smooth running.`,
+    relacion: "Ratio above 7:1. Consider a two-stage drive.",
+    corta: (n: string) => `Short center distance (${n} pitches). 30 to 50 pitches is ideal.`,
+    larga: (n: string) => `Long center distance (${n} pitches): add a guide or tensioner to stop chain whip.`,
+    ideal: (n: string) => `Center distance of ${n} pitches: within the ideal range (30 to 50 recommended, up to 80).`,
+    contacto: (g: string) => `Wrap angle on the small sprocket is ${g}°: below 120°. Increase the center distance or reduce the ratio.`,
+    impar: "Odd number of links: needs an offset (half) link, which weakens the chain. Prefer an even number.",
+    rapida: (v: string) => `Chain speed ${v} m/s: high. Needs good lubrication (oil bath or pump).`,
+  },
+};
+
 /** Recomendaciones habituales de diseño de transmisiones por cadena. */
-export function avisos(t: Transmision, z1: number, z2: number): Aviso[] {
+export function avisos(t: Transmision, z1: number, z2: number, l: "es" | "en" = "es"): Aviso[] {
+  const x = AV[l];
   const a: Aviso[] = [];
   const chico = Math.min(z1, z2);
-  if (chico < 9) a.push({ nivel: "mal", texto: `Piñón de ${chico} dientes: muy chico, la cadena trabaja a golpes y se desgasta rápido. Use 17 o más si puede.` });
-  else if (chico < 17) a.push({ nivel: "ojo", texto: `Piñón chico de ${chico} dientes: aceptable a baja velocidad. Para marcha suave se recomiendan 17 o más.` });
-  else a.push({ nivel: "ok", texto: `Piñón chico de ${chico} dientes: marcha suave.` });
+  if (chico < 9) a.push({ nivel: "mal", texto: x.muyChico(chico) });
+  else if (chico < 17) a.push({ nivel: "ojo", texto: x.chico(chico) });
+  else a.push({ nivel: "ok", texto: x.bien(chico) });
 
-  if (t.relacion > 7 || t.relacion < 1 / 7) a.push({ nivel: "mal", texto: "Relación mayor a 7:1. Conviene hacerla en dos etapas." });
+  if (t.relacion > 7 || t.relacion < 1 / 7) a.push({ nivel: "mal", texto: x.relacion });
 
-  if (t.cEnPasos < 30) a.push({ nivel: "ojo", texto: `Distancia entre centros corta (${t.cEnPasos.toFixed(0)} pasos). Lo ideal es 30 a 50 pasos.` });
-  else if (t.cEnPasos > 80) a.push({ nivel: "ojo", texto: `Distancia larga (${t.cEnPasos.toFixed(0)} pasos): use guía o tensor para que la cadena no flamee.` });
-  else a.push({ nivel: "ok", texto: `Distancia entre centros de ${t.cEnPasos.toFixed(0)} pasos: dentro del rango ideal (30 a 50 recomendado, hasta 80).` });
+  const n = t.cEnPasos.toFixed(0);
+  if (t.cEnPasos < 30) a.push({ nivel: "ojo", texto: x.corta(n) });
+  else if (t.cEnPasos > 80) a.push({ nivel: "ojo", texto: x.larga(n) });
+  else a.push({ nivel: "ok", texto: x.ideal(n) });
 
-  if (t.abrazamiento < 120) a.push({ nivel: "mal", texto: `Ángulo de contacto en el piñón chico de ${t.abrazamiento.toFixed(0)}°: menor a 120°. Aumente la distancia o reduzca la relación.` });
-
-  if (t.eslabones % 2 === 1) a.push({ nivel: "ojo", texto: "Número impar de eslabones: necesita un medio eslabón (acodado), que debilita la cadena. Prefiera un número par." });
-
-  if (t.velocidad !== undefined && t.velocidad > 12) a.push({ nivel: "ojo", texto: `Velocidad de cadena ${t.velocidad.toFixed(1)} m/s: alta. Requiere buena lubricación (baño de aceite o bomba).` });
+  if (t.abrazamiento < 120) a.push({ nivel: "mal", texto: x.contacto(t.abrazamiento.toFixed(0)) });
+  if (t.eslabones % 2 === 1) a.push({ nivel: "ojo", texto: x.impar });
+  if (t.velocidad !== undefined && t.velocidad > 12) a.push({ nivel: "ojo", texto: x.rapida(t.velocidad.toFixed(1)) });
   return a;
 }

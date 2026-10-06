@@ -73,9 +73,13 @@ main { max-width: 1240px; margin: 0 auto; padding: 0 20px 56px; }
 .top nav a.activo::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: -1px; height: 2px; border-radius: 2px; background: var(--acento); }
 .lema { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; }
 .lema svg { color: var(--ink-3); }
+.btn-idioma { display: grid; place-items: center; height: 38px; padding: 0 11px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); color: var(--ink-2); font-weight: 750; font-size: 13px; letter-spacing: 0.04em; text-decoration: none; }
+.btn-idioma:hover { color: var(--acento); border-color: var(--acento-borde); }
 .btn-tema { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); color: var(--ink-2); cursor: pointer; }
 .btn-tema:hover { color: var(--acento); border-color: var(--acento-borde); }
-@media (max-width: 1360px) { .lema { display: none; } .btn-tema { margin-left: auto; } }
+@media (max-width: 1360px) { .lema { display: none; } .btn-idioma { margin-left: auto; } }
+.top-in { gap: 10px 28px; }
+.btn-idioma + .btn-tema { margin-left: -18px; }
 .top nav a { white-space: nowrap; }
 @media (max-width: 560px) {
   .top-in { height: auto; flex-wrap: wrap; gap: 0 12px; padding: 10px 16px 0; }
@@ -399,3 +403,4 @@ select:focus, input:focus, button:focus-visible, .chip:has(input:focus-visible) 
   .vista { border: 0; grid-template-columns: 160px 200px; }
   .tarjetas { grid-template-columns: 1fr 1fr; }
 }
+.no-encontrada { max-width: 640px; padding: 60px 0; } .no-encontrada hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; } .no-encontrada a { color: var(--acento); font-weight: 700; }

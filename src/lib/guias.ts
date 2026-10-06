@@ -45,3 +45,49 @@ export const GUIAS: Guia[] = [
 ];
 
 export const guiaPorSlug = (s: string) => GUIAS.find((g) => g.slug === s);
+
+/** Guías en inglés (mismas fotos; slugs en lib/idioma.ts → GUIAS_SLUG). */
+export const GUIAS_EN: Guia[] = [
+  {
+    slug: "how-to-measure-a-sprocket",
+    titulo: "How to measure a sprocket with a caliper",
+    tituloSeo: "How to Measure a Sprocket with a Caliper (Step by Step, Odd Tooth Counts Too)",
+    descripcion:
+      "The right way to measure a roller chain sprocket: count teeth, measure over the tips and root to root (odd tooth counts too), find the pitch and spot wear. With real numbers.",
+    resumen: "Count teeth, measure tips and root, the odd-tooth trick and how to spot a hooked tooth.",
+    minutos: 6,
+    foto: "taller-pinon-simple.jpg",
+  },
+  {
+    slug: "08b-vs-ansi-40",
+    titulo: "08B vs ANSI 40: European or American chain",
+    tituloSeo: "08B vs ANSI 40 (#40) Chain: Differences Between European and American Roller Chain",
+    descripcion:
+      "Same 1/2\" pitch, but not the same chain. What changes between ISO B series (08B) and ANSI (#40), whether you can mix them and how to tell them apart in a minute.",
+    resumen: "Same pitch, different roller. What changes, can you mix them, and how to tell them apart.",
+    minutos: 5,
+    foto: "taller-pinones-eje.jpg",
+  },
+  {
+    slug: "how-many-teeth-sprocket",
+    titulo: "How many teeth should a sprocket have",
+    tituloSeo: "How Many Teeth Should a Sprocket Have? Choosing the Tooth Count",
+    descripcion:
+      "Why 17 teeth is the recommended minimum, chordal action in numbers, the maximum ratio, odd tooth counts with even links, and a full selection example.",
+    resumen: "The 17-tooth minimum explained with numbers, maximum ratio and a complete example.",
+    minutos: 6,
+    foto: "taller-eje-pinones.jpg",
+  },
+  {
+    slug: "sprocket-gear-material-heat-treatment",
+    titulo: "Material and heat treatment for sprockets and gears",
+    tituloSeo: "Best Steel for Sprockets and Gears (1045, 4140, 8620) and How to Harden Them",
+    descripcion:
+      "1045, 4140, 8620, cast iron, stainless or plastic: when to use each, which heat treatment fits (induction, through hardening, carburizing) and the most common mistakes.",
+    resumen: "1045, 4140, 8620 and more: when to use each, how to harden and typical mistakes.",
+    minutos: 7,
+    foto: "taller-torneado.jpg",
+  },
+];
+
+export const guiaEnPorSlug = (s: string) => GUIAS_EN.find((g) => g.slug === s);

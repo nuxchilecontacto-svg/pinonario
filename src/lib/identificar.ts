@@ -38,11 +38,27 @@ export function identificarCadena(o: { largo: number; pasos: number; rodillo?: n
   return out.slice(0, 3);
 }
 
-export function estadoDesgaste(e: number): { nivel: "ok" | "ojo" | "mal"; texto: string } {
-  if (e < 1) return { nivel: "ok", texto: "Cadena en buen estado (estiramiento bajo 1 %)." };
-  if (e < 2) return { nivel: "ojo", texto: "Desgaste medio. Revísela de nuevo en la próxima mantención." };
-  if (e < 3) return { nivel: "ojo", texto: "Desgaste alto: planifique el cambio. Sobre 2 % ya daña los piñones." };
-  return { nivel: "mal", texto: "Cadena gastada (sobre 3 %): cámbiela, y revise los piñones, porque una cadena así los come." };
+const DESGASTE = {
+  es: [
+    "Cadena en buen estado (estiramiento bajo 1 %).",
+    "Desgaste medio. Revísela de nuevo en la próxima mantención.",
+    "Desgaste alto: planifique el cambio. Sobre 2 % ya daña los piñones.",
+    "Cadena gastada (sobre 3 %): cámbiela, y revise los piñones, porque una cadena así los come.",
+  ],
+  en: [
+    "Chain in good condition (elongation below 1%).",
+    "Moderate wear. Check it again at the next service.",
+    "High wear: plan the replacement. Above 2% it already damages the sprockets.",
+    "Worn out chain (over 3%): replace it and check the sprockets, a chain like this eats them.",
+  ],
+};
+
+export function estadoDesgaste(e: number, l: "es" | "en" = "es"): { nivel: "ok" | "ojo" | "mal"; texto: string } {
+  const t = DESGASTE[l];
+  if (e < 1) return { nivel: "ok", texto: t[0] };
+  if (e < 2) return { nivel: "ojo", texto: t[1] };
+  if (e < 3) return { nivel: "ojo", texto: t[2] };
+  return { nivel: "mal", texto: t[3] };
 }
 
 /* ───────────── Identificar el piñón ─────────────
