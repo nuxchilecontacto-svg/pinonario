@@ -5,7 +5,7 @@ import { CalcEngranajes } from "@/components/CalcEngranajes";
 export const metadata: Metadata = {
   title: { absolute: "Calculadora de Engranajes por Módulo: Medidas, Wk y DXF" },
   description:
-    "Módulo y dientes: diámetros, altura del diente, medida sobre k dientes (Wk) para controlar con pie de metro, distancia entre centros y DXF del perfil. ISO 53, también DP.",
+    "Módulo y dientes: diámetros, altura del diente, medida Wk para controlar con pie de metro, distancia entre centros y DXF del perfil. ISO 53 o DP.",
   alternates: alternativas("/engranajes/", "/en/gears/", "es"),
   openGraph: {
     title: "Calculadora de Engranajes por Módulo: Medidas, Wk y DXF",

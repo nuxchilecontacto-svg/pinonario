@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITIO.nombre}`,
   },
   description:
-    "¿Aún buscas medidas en un catálogo de papel? Elige paso y Z y obtén Dp, De, Df, cubo, ancho de diente y material de corte. ISO y ASA, mm y pulgadas. Gratis.",
+    "¿Aún buscas medidas en un catálogo de papel? Elige paso y Z y obtén Dp, De, Df, cubo, ancho de diente y material. ISO y ASA, mm y pulgadas. Gratis.",
   openGraph: {
     type: "website",
     locale: "es_CL",

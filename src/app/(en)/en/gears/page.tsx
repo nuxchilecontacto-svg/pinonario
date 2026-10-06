@@ -5,7 +5,7 @@ import { alternativas } from "@/lib/idioma";
 export const metadata: Metadata = {
   title: { absolute: "Spur Gear Calculator (Diametral Pitch or Module): Dimensions, Span and DXF" },
   description:
-    "Diametral pitch or module and tooth count: pitch, outside and root diameters, span measurement over k teeth, chordal thickness, center distance and a DXF of the tooth profile.",
+    "Diametral pitch or module and teeth: pitch, outside and root diameters, span over k teeth, chordal thickness, center distance and a DXF of the profile.",
   alternates: alternativas("/engranajes/", "/en/gears/", "en"),
   openGraph: {
     title: "Spur Gear Calculator (Diametral Pitch or Module): Dimensions, Span and DXF",

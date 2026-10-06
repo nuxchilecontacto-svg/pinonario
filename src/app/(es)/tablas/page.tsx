@@ -6,7 +6,7 @@ import { CADENAS } from "@/lib/cadenas";
 export const metadata: Metadata = {
   title: { absolute: "Tablas de Piñones ISO y ASA: 24 Pasos, de Z8 a Z120" },
   description:
-    'Las tablas de piñones que usas en el taller, sin hojear catálogos: 24 cadenas de 8 mm a 3", europeas y americanas. Abre tu paso y encuentra tu Z en segundos.',
+    'Las tablas de piñones que usas en el taller, sin hojear catálogos: 24 cadenas de 8 mm a 3", europeas y americanas. Abre tu paso y encuentra tu Z.',
   alternates: alternativas("/tablas/", "/en/tables/", "es"),
 };
 

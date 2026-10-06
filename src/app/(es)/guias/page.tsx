@@ -6,7 +6,7 @@ import { GUIAS } from "@/lib/guias";
 export const metadata: Metadata = {
   title: { absolute: "Guías de Piñones, Cadenas y Engranajes para el Taller" },
   description:
-    "Guías prácticas escritas desde el taller: cómo medir un piñón, diferencias entre cadena europea y americana, cuántos dientes usar y qué acero y temple elegir.",
+    "Guías escritas desde el taller: cómo medir un piñón, cadena europea vs americana, cuántos dientes usar y qué acero y temple elegir.",
   alternates: alternativas("/guias/", "/en/guides/", "es"),
 };
 

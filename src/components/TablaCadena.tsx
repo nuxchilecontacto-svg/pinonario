@@ -10,7 +10,7 @@ const Z_TABLA = Array.from({ length: 113 }, (_, i) => i + 8); // Z 8 a 120
 const TX = {
   es: {
     titulo: (c: Cadena) => `Tabla Piñón ${c.codigo} ${c.medida}: Z8 a Z120 Listo para Tornear`,
-    desc: (c: Cadena, dp: string, de: string) => `¿Piñón ${c.codigo} de 20 dientes? Dp ${dp} mm y De ${de} mm. Aquí tienes Z8 a Z120 con diámetros, medida de control y cubo máximo, sin hojear catálogos.`,
+    desc: (c: Cadena, dp: string, de: string) => `¿Piñón ${c.codigo} de 20 dientes? Dp ${dp} mm y De ${de} mm. Z8 a Z120 con diámetros, medida de control y cubo máximo, sin hojear catálogos.`,
     tablas: "Tablas", h1: "Tabla de piñones", cadena: "Cadena", iso: "europea ISO 606 / DIN 8187", asa: "americana ANSI B29.1 (ASA)",
     paso: "paso", rodillo: "rodillo Ø", ancho: "ancho interior", diente: "ancho de diente simple",
     nota: "Medidas en mm. Toca una fila para abrirla en la calculadora (doble, triple, pulgadas, material).",
@@ -20,7 +20,7 @@ const TX = {
   },
   en: {
     titulo: (c: Cadena) => `${codigo(c, "en")} Sprocket Chart (${c.medida}): 8 to 120 Teeth, Ready to Machine`,
-    desc: (c: Cadena, dp: string, de: string) => `Need a 20-tooth ${codigo(c, "en")} sprocket? Pitch dia. ${dp}", OD ${de}". Full chart from 8 to 120 teeth with pitch, outside, bottom and caliper diameters plus max hub. No catalog needed.`,
+    desc: (c: Cadena, dp: string, de: string) => `Need a 20-tooth ${codigo(c, "en")} sprocket? Pitch dia. ${dp}", OD ${de}". Chart from 8 to 120 teeth: pitch, outside, bottom and caliper diameters plus max hub.`,
     tablas: "Tables", h1: "Sprocket chart", cadena: "Chain", iso: "European ISO 606 / DIN 8187", asa: "American ANSI B29.1",
     paso: "pitch", rodillo: "roller Ø", ancho: "inner width", diente: "simplex tooth width",
     nota: "Dimensions in inches. Tap a row to open it in the calculator (duplex, triplex, mm, material).",

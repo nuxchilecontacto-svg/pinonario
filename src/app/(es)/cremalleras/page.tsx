@@ -5,7 +5,7 @@ import { CalcCremallera } from "@/components/CalcCremallera";
 export const metadata: Metadata = {
   title: { absolute: "Calculadora de Cremalleras por Módulo: Paso, Largo y DXF" },
   description:
-    "Módulo y largo: paso, número de dientes, altura al primitivo, avance por vuelta del piñón y DXF de la barra completa para cortar o fresar. ISO 53, también DP.",
+    "Módulo y largo: paso, número de dientes, altura al primitivo, avance por vuelta del piñón y DXF de la barra para cortar o fresar. ISO 53 o DP.",
   alternates: alternativas("/cremalleras/", "/en/racks/", "es"),
 };
 

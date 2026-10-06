@@ -6,7 +6,7 @@ import { alternativas, codigo } from "@/lib/idioma";
 export const metadata: Metadata = {
   title: { absolute: "Sprocket Dimension Charts for ANSI and ISO Roller Chain: 8 to 120 Teeth" },
   description:
-    'Free sprocket charts for every roller chain size from #25 to #240 and 05B to 48B: pitch, outside, bottom and caliper diameters for 8 to 120 teeth, in inches.',
+    'Free sprocket charts for every roller chain size from #25 to #240 and 05B to 48B: pitch, outside, bottom and caliper diameters for 8 to 120 teeth.',
   alternates: alternativas("/tablas/", "/en/tables/", "en"),
 };
 

@@ -5,7 +5,7 @@ import { Identificador } from "@/components/Identificador";
 export const metadata: Metadata = {
   title: { absolute: "¿Qué Cadena o Piñón Tengo? Identifícalo con Pie de Metro" },
   description:
-    "¿Piñón gastado y sin marca? Cuenta dientes, mide con pie de metro y descubre si es 08B o ASA 40, su paso y cuánto está estirada tu cadena. Gratis, en segundos.",
+    "¿Piñón gastado y sin marca? Cuenta dientes, mide con pie de metro y descubre si es 08B o ASA 40, su paso y cuánto está estirada tu cadena.",
   alternates: alternativas("/identificar/", "/en/identify/", "es"),
   openGraph: {
     title: "¿Qué Cadena o Piñón Tengo? Identifícalo con Pie de Metro",

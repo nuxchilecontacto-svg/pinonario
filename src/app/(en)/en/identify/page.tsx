@@ -5,7 +5,7 @@ import { alternativas } from "@/lib/idioma";
 export const metadata: Metadata = {
   title: { absolute: "What Chain or Sprocket Do I Have? Identify It with a Caliper" },
   description:
-    "Worn sprocket with no markings? Count the teeth, take three caliper readings and find out if it is #40 or 08B, its pitch, and how stretched your chain is. Free, in seconds.",
+    "Worn sprocket with no markings? Count the teeth, take three caliper readings and find out if it is #40 or 08B, its pitch and how stretched your chain is.",
   alternates: alternativas("/identificar/", "/en/identify/", "en"),
   openGraph: {
     title: "What Chain or Sprocket Do I Have? Identify It with a Caliper",

@@ -6,7 +6,7 @@ import { alternativas } from "@/lib/idioma";
 export const metadata: Metadata = {
   title: { absolute: "Sprocket, Roller Chain and Gear Guides for the Machine Shop" },
   description:
-    "Practical guides written from the shop floor: how to measure a sprocket, ANSI vs ISO chain, how many teeth to use and which steel and heat treatment to choose.",
+    "Guides from the shop floor: how to measure a sprocket, ANSI vs ISO chain, how many teeth to use and which steel and heat treatment to choose.",
   alternates: alternativas("/guias/", "/en/guides/", "en"),
 };
 

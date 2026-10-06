@@ -5,7 +5,7 @@ import { alternativas } from "@/lib/idioma";
 export const metadata: Metadata = {
   title: { absolute: "Roller Chain Length Calculator: Links and Exact Center Distance" },
   description:
-    "How many links does your chain need? Enter pitch, sprocket teeth and center distance: get the exact length, the real center distance, ratio and RPM, plus a design check.",
+    "How many links does your chain need? Enter pitch, teeth and center distance: get exact length, real center distance, ratio and RPM, plus a design check.",
   alternates: alternativas("/transmision/", "/en/chain-length/", "en"),
   openGraph: {
     title: "Roller Chain Length Calculator: Links and Exact Center Distance",

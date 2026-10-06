@@ -5,7 +5,7 @@ import { CalcTransmision } from "@/components/CalcTransmision";
 export const metadata: Metadata = {
   title: { absolute: "Calculadora de Largo de Cadena: Eslabones y Distancia Exacta" },
   description:
-    "¿Cuántos eslabones lleva tu cadena? Ingresa paso, dientes y distancia entre ejes: obtén el largo exacto, la distancia real, la relación y RPM, con revisión del diseño.",
+    "¿Cuántos eslabones lleva tu cadena? Ingresa paso, dientes y distancia entre ejes: largo exacto, distancia real, relación y RPM, con revisión del diseño.",
   alternates: alternativas("/transmision/", "/en/chain-length/", "es"),
   openGraph: {
     title: "Calculadora de Largo de Cadena: Eslabones y Distancia Exacta",

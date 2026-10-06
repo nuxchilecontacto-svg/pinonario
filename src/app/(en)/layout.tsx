@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITIO.nombre}`,
   },
   description:
-    "Free roller chain sprocket calculator: pitch, outside and bottom diameter, caliper and over-pin measurement, hub, tooth width and DXF for cutting. ANSI and ISO, inch and mm.",
+    "Free sprocket calculator: pitch, outside and bottom diameter, caliper and over-pin size, hub, tooth width and DXF for cutting. ANSI and ISO, inch or mm.",
   openGraph: {
     type: "website",
     locale: "en_US",
