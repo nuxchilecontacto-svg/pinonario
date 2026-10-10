@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Identificador } from "@/components/Identificador";
 import { alternativas } from "@/lib/idioma";
+import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = {
   title: { absolute: "What Chain or Sprocket Do I Have? Identify It with a Caliper" },
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 export default function Identify() {
   return (
     <>
+      <DatosApp nombre="Chain and sprocket identifier" descripcion={metadata.description as string} ruta="/en/identify/" l="en" />
       <div className="intro">
         <span className="ceja">Identifier</span>
         <h1>What chain or sprocket do I have?</h1>

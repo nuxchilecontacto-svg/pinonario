@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { alternativas } from "@/lib/idioma";
 import { CalcCremallera } from "@/components/CalcCremallera";
+import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = {
   title: { absolute: "Calculadora de Cremalleras por Módulo: Paso, Largo y DXF" },
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function Cremalleras() {
   return (
     <>
+      <DatosApp nombre="Calculadora de cremalleras" descripcion={metadata.description as string} ruta="/cremalleras/" l="es" />
       <div className="intro">
         <span className="ceja">Cremalleras</span>
         <h1>Calculadora de cremalleras</h1>

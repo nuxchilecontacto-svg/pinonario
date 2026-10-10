@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { alternativas } from "@/lib/idioma";
 import { CalcEngranajes } from "@/components/CalcEngranajes";
+import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = {
   title: { absolute: "Calculadora de Engranajes por Módulo: Medidas, Wk y DXF" },
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 export default function Engranajes() {
   return (
     <>
+      <DatosApp nombre="Calculadora de engranajes rectos" descripcion={metadata.description as string} ruta="/engranajes/" l="es" />
       <div className="intro">
         <span className="ceja">Engranajes rectos</span>
         <h1>Calculadora de engranajes por módulo</h1>

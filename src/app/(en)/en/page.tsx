@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Calculadora } from "@/components/Calculadora";
 import { Icono } from "@/components/Iconos";
 import { alternativas } from "@/lib/idioma";
+import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = { alternates: alternativas("/", "/en/", "en") };
 
@@ -17,6 +18,7 @@ const FOTOS = [
 export default function Home() {
   return (
     <>
+      <DatosApp nombre="Roller chain sprocket calculator" descripcion={"Pick the standard (ANSI or ISO), pitch and tooth count and get every sprocket dimension: pitch, outside and bottom diameter, caliper size, hub, tooth width and DXF."} ruta="/en/" l="en" portada />
       <section className="hero">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="hero-foto" src="/img/pinon.jpg" alt="Machined roller chain sprocket" width={760} height={570} fetchPriority="high" />

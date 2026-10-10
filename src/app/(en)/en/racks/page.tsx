@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CalcCremallera } from "@/components/CalcCremallera";
 import { alternativas } from "@/lib/idioma";
+import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = {
   title: { absolute: "Gear Rack Calculator (DP or Module): Pitch, Length and DXF" },
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function Racks() {
   return (
     <>
+      <DatosApp nombre="Gear rack calculator" descripcion={metadata.description as string} ruta="/en/racks/" l="en" />
       <div className="intro">
         <span className="ceja">Gear racks</span>
         <h1>Gear rack calculator</h1>

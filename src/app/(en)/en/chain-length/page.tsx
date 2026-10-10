@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CalcTransmision } from "@/components/CalcTransmision";
 import { alternativas } from "@/lib/idioma";
+import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = {
   title: { absolute: "Roller Chain Length Calculator: Links and Exact Center Distance" },
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 export default function ChainLength() {
   return (
     <>
+      <DatosApp nombre="Roller chain length calculator" descripcion={metadata.description as string} ruta="/en/chain-length/" l="en" />
       <div className="intro">
         <span className="ceja">Roller chain drives</span>
         <h1>Chain length calculator</h1>

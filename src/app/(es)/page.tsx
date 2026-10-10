@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { alternativas } from "@/lib/idioma";
 import { Calculadora } from "@/components/Calculadora";
 import { Icono } from "@/components/Iconos";
+import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = { alternates: alternativas("/", "/en/", "es") };
 
@@ -17,6 +18,7 @@ const FOTOS = [
 export default function Inicio() {
   return (
     <>
+      <DatosApp nombre="Calculadora de piñones para cadena" descripcion={"Elige norma (ISO o ASA), paso y número de dientes y obtén todas las medidas del piñón: Dp, De, Df, calibre, cubo, ancho de diente y DXF para corte."} ruta="/" l="es" portada />
       <section className="hero">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="hero-foto" src="/img/pinon.jpg" alt="Piñón para cadena de rodillos mecanizado en taller" width={760} height={570} fetchPriority="high" />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CalcEngranajes } from "@/components/CalcEngranajes";
 import { alternativas } from "@/lib/idioma";
+import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = {
   title: { absolute: "Spur Gear Calculator (Diametral Pitch or Module): Dimensions, Span and DXF" },
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 export default function Gears() {
   return (
     <>
+      <DatosApp nombre="Spur gear calculator" descripcion={metadata.description as string} ruta="/en/gears/" l="en" />
       <div className="intro">
         <span className="ceja">Spur gears</span>
         <h1>Spur gear calculator</h1>

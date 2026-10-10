@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { alternativas } from "@/lib/idioma";
 import { CalcTransmision } from "@/components/CalcTransmision";
+import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = {
   title: { absolute: "Calculadora de Largo de Cadena: Eslabones y Distancia Exacta" },
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 export default function Transmision() {
   return (
     <>
+      <DatosApp nombre="Calculadora de largo de cadena" descripcion={metadata.description as string} ruta="/transmision/" l="es" />
       <div className="intro">
         <span className="ceja">Transmisión por cadena</span>
         <h1>Calculadora de largo de cadena</h1>
