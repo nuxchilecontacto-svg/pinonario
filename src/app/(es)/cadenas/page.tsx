@@ -5,9 +5,9 @@ import { CADENAS } from "@/lib/cadenas";
 import { largo } from "@/lib/formato";
 
 export const metadata: Metadata = {
-  title: { absolute: "¿08B o ASA 40? Identifica tu Cadena de Rodillos" },
+  title: { absolute: "¿08B o ASA 40? Tabla de Medidas de Cadenas de Rodillos" },
   description:
-    "Parecen iguales, pero un piñón para 08B no siempre sirve en ASA 40. Mide paso y rodillo y compáralos con las medidas de 24 cadenas ISO y ASA.",
+    "Parecen iguales, pero no lo son: compara gratis paso, rodillo y ancho de 24 cadenas ISO y ASA, en mm y pulgadas, y sabe qué piñón le sirve a tu cadena.",
   alternates: alternativas("/cadenas/", "/en/chains/", "es"),
 };
 

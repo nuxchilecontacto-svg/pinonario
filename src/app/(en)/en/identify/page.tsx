@@ -4,12 +4,12 @@ import { alternativas } from "@/lib/idioma";
 import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = {
-  title: { absolute: "What Chain or Sprocket Do I Have? Identify It with a Caliper" },
+  title: { absolute: "What Chain or Sprocket Do I Have? Free Caliper Identifier" },
   description:
-    "Worn sprocket with no markings? Count the teeth, take three caliper readings and find out if it is #40 or 08B, its pitch and how stretched your chain is.",
+    "Worn sprocket with no markings? Count the teeth, take three caliper readings and find out free if it is #40 or 08B, its pitch and chain stretch.",
   alternates: alternativas("/identificar/", "/en/identify/", "en"),
   openGraph: {
-    title: "What Chain or Sprocket Do I Have? Identify It with a Caliper",
+    title: "What Chain or Sprocket Do I Have? Free Caliper Identifier",
     description: "Identify roller chains and sprockets (ANSI and ISO) with three caliper measurements.",
     images: [{ url: "/img/taller-pinon-simple.jpg", width: 570, height: 760 }],
   },

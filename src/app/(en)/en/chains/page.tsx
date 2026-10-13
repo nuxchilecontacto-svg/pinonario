@@ -5,9 +5,9 @@ import { largo } from "@/lib/formato";
 import { alternativas, codigo } from "@/lib/idioma";
 
 export const metadata: Metadata = {
-  title: { absolute: "Roller Chain Dimensions Chart: ANSI #25 to #240 and ISO 05B to 48B" },
+  title: { absolute: "Roller Chain Size Chart: ANSI #25–#240 and ISO 05B–48B" },
   description:
-    "Pitch, roller diameter, inner width, plate height and transverse pitch for 24 ANSI and ISO roller chains, in inches and mm. Tell #40 from 08B in a minute.",
+    "Free roller chain size chart: pitch, roller diameter, inner width and plate height for 24 ANSI and ISO chains, in inches and mm. Tell #40 from 08B fast.",
   alternates: alternativas("/cadenas/", "/en/chains/", "en"),
 };
 

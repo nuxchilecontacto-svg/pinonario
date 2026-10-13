@@ -4,12 +4,12 @@ import { Identificador } from "@/components/Identificador";
 import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = {
-  title: { absolute: "¿Qué Cadena o Piñón Tengo? Identifícalo con Pie de Metro" },
+  title: { absolute: "¿Qué Cadena o Piñón Tengo? Identifícalo Gratis en 1 Minuto" },
   description:
-    "¿Piñón gastado y sin marca? Cuenta dientes, mide con pie de metro y descubre si es 08B o ASA 40, su paso y cuánto está estirada tu cadena.",
+    "¿Piñón gastado y sin marca? Cuenta dientes, toma tres medidas con pie de metro y sabe gratis si es 08B o ASA 40, su paso y cuánto está estirada la cadena.",
   alternates: alternativas("/identificar/", "/en/identify/", "es"),
   openGraph: {
-    title: "¿Qué Cadena o Piñón Tengo? Identifícalo con Pie de Metro",
+    title: "¿Qué Cadena o Piñón Tengo? Identifícalo Gratis en 1 Minuto",
     description: "Identifica cadenas y piñones de rodillos (ISO y ASA) con tres medidas de pie de metro.",
     images: [{ url: "/img/taller-pinon-simple.jpg", width: 570, height: 760 }],
   },

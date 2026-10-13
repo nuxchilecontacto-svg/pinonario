@@ -4,12 +4,12 @@ import { CalcEngranajes } from "@/components/CalcEngranajes";
 import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = {
-  title: { absolute: "Calculadora de Engranajes por Módulo: Medidas, Wk y DXF" },
+  title: { absolute: "Calculadora de Engranajes Gratis: Medidas, Wk y DXF" },
   description:
-    "Módulo y dientes: diámetros, altura del diente, medida Wk para controlar con pie de metro, distancia entre centros y DXF del perfil. ISO 53 o DP.",
+    "Ingresa módulo (o DP) y dientes y obtén gratis diámetros, medida Wk para controlar con pie de metro, distancia entre centros y el DXF del perfil.",
   alternates: alternativas("/engranajes/", "/en/gears/", "es"),
   openGraph: {
-    title: "Calculadora de Engranajes por Módulo: Medidas, Wk y DXF",
+    title: "Calculadora de Engranajes Gratis: Medidas, Wk y DXF",
     description: "Engranajes rectos ISO 53: diámetros, Wk, espesor cordal, pareja y DXF para corte. Módulo o diametral pitch.",
     images: [{ url: "/img/taller-engranajes.jpg", width: 427, height: 760 }],
   },

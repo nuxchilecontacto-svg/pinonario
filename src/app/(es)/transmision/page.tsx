@@ -4,12 +4,12 @@ import { CalcTransmision } from "@/components/CalcTransmision";
 import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = {
-  title: { absolute: "Calculadora de Largo de Cadena: Eslabones y Distancia Exacta" },
+  title: { absolute: "Calculadora de Largo de Cadena Gratis: Eslabones Exactos" },
   description:
-    "¿Cuántos eslabones lleva tu cadena? Ingresa paso, dientes y distancia entre ejes: largo exacto, distancia real, relación y RPM, con revisión del diseño.",
+    "Calcula gratis cuántos eslabones comprar: ingresa paso, dientes y distancia entre ejes y obtén el largo exacto, la distancia real y la relación. ISO y ASA.",
   alternates: alternativas("/transmision/", "/en/chain-length/", "es"),
   openGraph: {
-    title: "Calculadora de Largo de Cadena: Eslabones y Distancia Exacta",
+    title: "Calculadora de Largo de Cadena Gratis: Eslabones Exactos",
     description: "Eslabones, distancia entre centros real, relación y RPM de una transmisión por cadena. ISO y ASA.",
     images: [{ url: "/img/taller-pinones-eje.jpg", width: 760, height: 570 }],
   },

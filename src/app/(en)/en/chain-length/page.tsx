@@ -4,12 +4,12 @@ import { alternativas } from "@/lib/idioma";
 import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = {
-  title: { absolute: "Roller Chain Length Calculator: Links and Exact Center Distance" },
+  title: { absolute: "Free Roller Chain Length Calculator: Exact Link Count" },
   description:
-    "How many links does your chain need? Enter pitch, teeth and center distance: get exact length, real center distance, ratio and RPM, plus a design check.",
+    "Find out how many links to buy, free: enter pitch, teeth and center distance and get exact chain length, real center distance, ratio and RPM. ANSI and ISO.",
   alternates: alternativas("/transmision/", "/en/chain-length/", "en"),
   openGraph: {
-    title: "Roller Chain Length Calculator: Links and Exact Center Distance",
+    title: "Free Roller Chain Length Calculator: Exact Link Count",
     description: "Links, real center distance, ratio and RPM of a roller chain drive. ANSI and ISO.",
     images: [{ url: "/img/taller-pinones-eje.jpg", width: 760, height: 570 }],
   },

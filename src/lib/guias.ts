@@ -5,7 +5,7 @@ export const GUIAS: Guia[] = [
   {
     slug: "como-medir-un-pinon",
     titulo: "Cómo medir un piñón con pie de metro",
-    tituloSeo: "Cómo Medir un Piñón con Pie de Metro (Paso a Paso, con Z Impar)",
+    tituloSeo: "Cómo Medir un Piñón con Pie de Metro (También con Z Impar)",
     descripcion:
       "Cómo medir un piñón de cadena: contar dientes, medir puntas y fondo (también con Z impar), sacar el paso y reconocer el desgaste. Con ejemplos reales.",
     resumen: "Contar dientes, medir puntas y fondo, el truco del Z impar y cómo reconocer un diente gastado.",
@@ -35,7 +35,7 @@ export const GUIAS: Guia[] = [
   {
     slug: "material-y-tratamiento-termico",
     titulo: "Material y tratamiento térmico para piñones y engranajes",
-    tituloSeo: "Qué Acero Usar para Piñones y Engranajes (1045, 4140, 8620) y Cómo Templarlos",
+    tituloSeo: "Qué Acero Usar en Piñones y Engranajes y Cómo Templarlo",
     descripcion:
       "SAE 1045, 4140, 8620, fundición, inoxidable o plástico: cuándo usar cada uno, qué temple conviene (inducción, bonificado, cementado) y qué evitar.",
     resumen: "1045, 4140, 8620 y otros: cuándo usar cada uno, cómo templar y los errores típicos.",
@@ -51,7 +51,7 @@ export const GUIAS_EN: Guia[] = [
   {
     slug: "how-to-measure-a-sprocket",
     titulo: "How to measure a sprocket with a caliper",
-    tituloSeo: "How to Measure a Sprocket with a Caliper (Step by Step, Odd Tooth Counts Too)",
+    tituloSeo: "How to Measure a Sprocket with a Caliper (Odd Teeth Too)",
     descripcion:
       "How to measure a roller chain sprocket: count teeth, measure over the tips and root to root (odd tooth counts too), find the pitch and spot wear.",
     resumen: "Count teeth, measure tips and root, the odd-tooth trick and how to spot a hooked tooth.",
@@ -61,7 +61,7 @@ export const GUIAS_EN: Guia[] = [
   {
     slug: "08b-vs-ansi-40",
     titulo: "08B vs ANSI 40: European or American chain",
-    tituloSeo: "08B vs ANSI 40 (#40) Chain: Differences Between European and American Roller Chain",
+    tituloSeo: "08B vs ANSI #40 Chain: European vs American Roller Chain",
     descripcion:
       "Same 1/2\" pitch, but not the same chain. What changes between ISO 08B and ANSI #40, whether you can mix them and how to tell them apart in a minute.",
     resumen: "Same pitch, different roller. What changes, can you mix them, and how to tell them apart.",
@@ -71,7 +71,7 @@ export const GUIAS_EN: Guia[] = [
   {
     slug: "how-many-teeth-sprocket",
     titulo: "How many teeth should a sprocket have",
-    tituloSeo: "How Many Teeth Should a Sprocket Have? Choosing the Tooth Count",
+    tituloSeo: "How Many Teeth Should a Sprocket Have? How to Choose",
     descripcion:
       "Why 17 teeth is the recommended minimum, chordal action in numbers, the maximum ratio, odd tooth counts with even links, and a full selection example.",
     resumen: "The 17-tooth minimum explained with numbers, maximum ratio and a complete example.",
@@ -81,7 +81,7 @@ export const GUIAS_EN: Guia[] = [
   {
     slug: "sprocket-gear-material-heat-treatment",
     titulo: "Material and heat treatment for sprockets and gears",
-    tituloSeo: "Best Steel for Sprockets and Gears (1045, 4140, 8620) and How to Harden Them",
+    tituloSeo: "Best Steel for Sprockets and Gears and How to Harden It",
     descripcion:
       "1045, 4140, 8620, cast iron, stainless or plastic: when to use each, which heat treatment fits (induction, through hardening, carburizing).",
     resumen: "1045, 4140, 8620 and more: when to use each, how to harden and typical mistakes.",

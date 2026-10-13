@@ -6,16 +6,16 @@ import "../globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITIO.url),
   title: {
-    default: "Sprocket Calculator: Every Dimension, No Catalog Needed",
+    default: "Free Sprocket Calculator: Every Dimension in Seconds",
     template: `%s | ${SITIO.nombre}`,
   },
   description:
-    "Free sprocket calculator: pitch, outside and bottom diameter, caliper and over-pin size, hub, tooth width and DXF for cutting. ANSI and ISO, inch or mm.",
+    "Skip the paper catalog: pick ANSI or ISO, pitch and tooth count and get pitch, outside and bottom diameter, hub, tooth width and a DXF for cutting. Free.",
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: SITIO.nombre,
-    title: "Sprocket Calculator: Every Dimension, No Catalog Needed",
+    title: "Free Sprocket Calculator: Every Dimension in Seconds",
     description: "Pick the chain and tooth count: every sprocket dimension plus a DXF for cutting. ANSI and ISO, inch and mm. Free.",
     images: [{ url: "/img/pinon.jpg", width: 760, height: 570 }],
   },

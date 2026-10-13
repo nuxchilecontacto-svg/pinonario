@@ -6,16 +6,16 @@ import "../globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITIO.url),
   title: {
-    default: "Calculadora de Piñones para Cadena: Olvida el Catálogo",
+    default: "Calculadora de Piñones Gratis: Todas las Medidas en Segundos",
     template: `%s | ${SITIO.nombre}`,
   },
   description:
-    "¿Aún buscas medidas en un catálogo de papel? Elige paso y Z y obtén Dp, De, Df, cubo, ancho de diente y material. ISO y ASA, mm y pulgadas. Gratis.",
+    "Deja el catálogo de papel: elige norma ISO o ASA, paso y Z y obtén gratis Dp, De, fondo, cubo, ancho de diente y DXF para corte. En mm o pulgadas.",
   openGraph: {
     type: "website",
     locale: "es_CL",
     siteName: SITIO.nombre,
-    title: "Calculadora de Piñones para Cadena: Olvida el Catálogo",
+    title: "Calculadora de Piñones Gratis: Todas las Medidas en Segundos",
     description: "Elige paso y Z: todas las medidas del piñón al instante. ISO y ASA, mm y pulgadas. Gratis.",
     images: [{ url: "/img/pinon.jpg", width: 760, height: 570 }],
   },

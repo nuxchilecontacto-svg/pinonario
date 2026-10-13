@@ -4,9 +4,9 @@ import { alternativas } from "@/lib/idioma";
 import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = {
-  title: { absolute: "Gear Rack Calculator (DP or Module): Pitch, Length and DXF" },
+  title: { absolute: "Free Gear Rack Calculator (DP or Module): Length and DXF" },
   description:
-    "Diametral pitch or module and length: pitch, number of teeth, pitch line height, travel per pinion revolution and a DXF of the full bar to cut or mill.",
+    "Enter diametral pitch or module and length to get pitch, tooth count, pitch line height, travel per pinion turn and a DXF of the full bar. Free.",
   alternates: alternativas("/cremalleras/", "/en/racks/", "en"),
 };
 

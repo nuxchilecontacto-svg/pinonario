@@ -4,12 +4,12 @@ import { alternativas } from "@/lib/idioma";
 import { DatosApp } from "@/components/DatosApp";
 
 export const metadata: Metadata = {
-  title: { absolute: "Spur Gear Calculator (Diametral Pitch or Module): Dimensions, Span and DXF" },
+  title: { absolute: "Free Spur Gear Calculator (DP or Module): Sizes and DXF" },
   description:
-    "Diametral pitch or module and teeth: pitch, outside and root diameters, span over k teeth, chordal thickness, center distance and a DXF of the profile.",
+    "Enter diametral pitch or module and teeth to get pitch and outside diameters, span over k teeth, center distance and a DXF of the profile. Free.",
   alternates: alternativas("/engranajes/", "/en/gears/", "en"),
   openGraph: {
-    title: "Spur Gear Calculator (Diametral Pitch or Module): Dimensions, Span and DXF",
+    title: "Free Spur Gear Calculator (DP or Module): Sizes and DXF",
     description: "Spur gear dimensions, span measurement, chordal thickness, gear pair and DXF for cutting. DP or module.",
     images: [{ url: "/img/taller-engranajes.jpg", width: 427, height: 760 }],
   },
