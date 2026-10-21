@@ -8,6 +8,7 @@ import { grados, kg, largo, unidad, type Unidad } from "@/lib/formato";
 import { codigo, type Idioma } from "@/lib/idioma";
 import { DibujoMedicion, DibujoPinon } from "./DibujoPinon";
 import { Icono } from "./Iconos";
+import { PlanoPinon } from "./PlanoPinon";
 
 type Grupo = "diametros" | "control" | "dentado" | "perfil" | "cubo" | "material";
 
@@ -32,6 +33,9 @@ const TX = {
     vista: "Vista previa del piñón", cadena: "Cadena", pasoCorto: "Paso", rodillo: "Rodillo Ø", anchoInt: "Ancho int.", pasoTransv: "Paso transv.",
     dxf: "Descargar DXF para corte", dxfArchivo: "pinon", dxfRefs: "Incluir círculos de referencia (Dp y Df, capa aparte)",
     dxfNota: (a: number) => `Perfil ISO 606 con arcos exactos, en mm, listo para plasma, láser, agua o CAD. Incluye el agujero de ${a} mm.`,
+    plano: "Generar plano de fabricación", planoNota: "Vista en corte con todas las cotas, tabla de datos, chavetero y prisionero. Para imprimir, PDF o DXF.",
+    deModo: "Criterio del diámetro exterior", deNorma: "Según ANSI", deReducido: "Reducido",
+    deAyuda: "ANSI B29.1 da De = p·(0,6 + cot 180°/Z). \"Reducido\" usa la práctica europea, unos 2 mm menos en un piñón mediano: la cadena entra con más holgura. Ambos quedan dentro del rango de la norma.",
     medidas: "Medidas calculadas", elegir: "Elegir qué datos mostrar",
     pinon: "Piñón", dobleMin: "doble", tripleMin: "triple",
     dp: "Diámetro primitivo", de: "Diámetro exterior (torneado)", deRango: "De mínimo / máximo norma", df: "Diámetro de fondo", pasoAng: "Paso angular",
@@ -59,6 +63,9 @@ const TX = {
     vista: "Sprocket preview", cadena: "Chain", pasoCorto: "Pitch", rodillo: "Roller Ø", anchoInt: "Inner width", pasoTransv: "Transv. pitch",
     dxf: "Download DXF for cutting", dxfArchivo: "sprocket", dxfRefs: "Include reference circles (pitch and bottom, separate layer)",
     dxfNota: (a: number) => `ISO 606 tooth form with true arcs, in mm, ready for plasma, laser, waterjet or CAD. Includes a ${a} mm bore.`,
+    plano: "Create manufacturing drawing", planoNota: "Section view with every dimension, data table, keyway and set screw. Print, PDF or DXF.",
+    deModo: "Outside diameter rule", deNorma: "ANSI standard", deReducido: "Reduced",
+    deAyuda: "ANSI B29.1 gives OD = p·(0.6 + cot 180°/N). \"Reduced\" uses European practice, about 2 mm smaller on a mid-size sprocket, so the chain engages with more clearance. Both stay within the standard range.",
     medidas: "Calculated dimensions", elegir: "Choose which data to show",
     pinon: "Sprocket", dobleMin: "duplex", tripleMin: "triplex",
     dp: "Pitch diameter", de: "Outside diameter (turned)", deRango: "Standard OD min / max", df: "Bottom diameter", pasoAng: "Tooth angle",
@@ -95,6 +102,8 @@ export function Calculadora({
   const [largoTotal, setLargoTotal] = useState<number | "">("");
   const [agujero, setAgujero] = useState<number | "">("");
   const [sobremedida, setSobremedida] = useState(3);
+  const [deModo, setDeModo] = useState<"norma" | "reducido">("norma");
+  const [planoAbierto, setPlanoAbierto] = useState(false);
 
   // Leer parámetros compartidos (?c=08b&z=20&h=1&u=in)
   useEffect(() => {
@@ -110,17 +119,25 @@ export function Calculadora({
     if (h === 1 || h === 2 || h === 3) setHileras(h);
     const uq = q.get("u");
     if (uq === "in" || uq === "mm") setU(uq);
+    if (q.get("e") === "r") setDeModo("reducido");
   }, []);
 
   useEffect(() => {
     const q = new URLSearchParams({ c: cadenaId, z: String(z), h: String(hileras), u });
+    if (deModo === "reducido") q.set("e", "r");
     window.history.replaceState(null, "", `?${q}`);
-  }, [cadenaId, z, hileras, u]);
+  }, [cadenaId, z, hileras, u, deModo]);
 
   const cadenas = CADENAS.filter((c) => c.norma === norma);
   const cadena = cadenaPorId(cadenaId) ?? cadenas[0];
   const zValido = Math.min(Math.max(Math.round(z) || Z_MIN, Z_MIN), Z_MAX);
-  const r = useMemo(() => calcularPinon(cadena, zValido, hileras), [cadena, zValido, hileras]);
+  const reducido = cadena.norma === "ASA" && deModo === "reducido";
+  const r = useMemo(() => {
+    const res = calcularPinon(cadena, zValido, hileras);
+    // Diámetro exterior "reducido" para ASA: misma regla que la práctica europea (35 % del rango de la norma)
+    if (reducido) res.deRec = res.deMin + 0.35 * (res.deMax - res.deMin);
+    return res;
+  }, [cadena, zValido, hileras, reducido]);
 
   // Sugerencias de cubo según práctica de catálogo: Ø ≈ 95 % del máximo, largo ≈ ancho dentado + 1,6·p
   const dCuboSug = Math.max(Math.floor(r.dCuboMax * 0.95), 0);
@@ -277,7 +294,16 @@ export function Calculadora({
             {t.dxfRefs}
           </label>
           <p className="nota">{t.dxfNota(agujeroEf)}</p>
+          <button className="btn-dxf" onClick={() => setPlanoAbierto(true)}>
+            <Icono n="lapiz" size={18} /> {t.plano}
+          </button>
+          <p className="nota">{t.planoNota}</p>
         </div>
+        {planoAbierto && (
+          <PlanoPinon l={l} u={u} cadena={cadena} z={zValido} hileras={hileras} r={r}
+            cuboInicial={{ con: conCubo, dCubo: dCuboEf, largo: largoEf, agujero: agujeroEf }}
+            onCerrar={() => setPlanoAbierto(false)} />
+        )}
       </section>
 
       {/* ── Resultados ── */}
@@ -306,6 +332,15 @@ export function Calculadora({
             <Tarjeta titulo={t.grupos.diametros} icono="diametro" unidad={U}>
               <Dato nombre={t.dp} sim="Dp" valor={L(r.dp)} destacado />
               <Dato nombre={t.de} sim="De" valor={L(r.deRec)} destacado />
+              {cadena.norma === "ASA" && (
+                <div className="de-modo no-print">
+                  <span className="etq">{t.deModo} <Ayuda texto={t.deAyuda} /></span>
+                  <div className="seg chico">
+                    <button className={deModo === "norma" ? "on" : ""} onClick={() => setDeModo("norma")}>{t.deNorma}</button>
+                    <button className={deModo === "reducido" ? "on" : ""} onClick={() => setDeModo("reducido")}>{t.deReducido}</button>
+                  </div>
+                </div>
+              )}
               <Dato nombre={t.deRango} sim="" valor={`${L(r.deMin)} – ${L(r.deMax)}`} />
               <Dato nombre={t.df} sim="Df" valor={L(r.df)} destacado />
               <Dato nombre={t.pasoAng} sim="" valor={grados(r.paso_angular, l)} />
