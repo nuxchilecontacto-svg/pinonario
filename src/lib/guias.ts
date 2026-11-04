@@ -25,9 +25,9 @@ export const GUIAS: Guia[] = [
   {
     slug: "como-elegir-numero-de-dientes",
     titulo: "Cómo elegir el número de dientes de un piñón",
-    tituloSeo: "Cuántos Dientes Debe Tener un Piñón: Guía para Elegir Z",
+    tituloSeo: "¿Cuántos Dientes Debe Tener un Piñón? Mínimo 17 y Por Qué",
     descripcion:
-      "Por qué 17 dientes es el mínimo recomendado, el efecto poligonal en números, la relación máxima, Z impar con eslabones pares y un ejemplo de selección.",
+      "Elige bien el Z de tu piñón: por qué 17 dientes es el mínimo para marcha suave, la relación máxima, Z impar con eslabones pares y un ejemplo resuelto.",
     resumen: "El mínimo de 17 dientes explicado con números, relación máxima y un ejemplo completo.",
     minutos: 6,
     foto: "taller-eje-pinones.jpg",
@@ -61,7 +61,7 @@ export const GUIAS_EN: Guia[] = [
   {
     slug: "08b-vs-ansi-40",
     titulo: "08B vs ANSI 40: European or American chain",
-    tituloSeo: "08B vs ANSI #40 Chain: European vs American Roller Chain",
+    tituloSeo: "08B Chain vs ANSI 40: Same Pitch, Not the Same Chain",
     descripcion:
       "Same 1/2\" pitch, but not the same chain. What changes between ISO 08B and ANSI #40, whether you can mix them and how to tell them apart in a minute.",
     resumen: "Same pitch, different roller. What changes, can you mix them, and how to tell them apart.",
@@ -71,9 +71,9 @@ export const GUIAS_EN: Guia[] = [
   {
     slug: "how-many-teeth-sprocket",
     titulo: "How many teeth should a sprocket have",
-    tituloSeo: "How Many Teeth Should a Sprocket Have? How to Choose",
+    tituloSeo: "Sprocket Number of Teeth: How Many Do You Need? (17+ Rule)",
     descripcion:
-      "Why 17 teeth is the recommended minimum, chordal action in numbers, the maximum ratio, odd tooth counts with even links, and a full selection example.",
+      "How many teeth should your sprocket have? Why 17 is the minimum for smooth running, the max ratio, odd tooth counts and a worked example. Free guide.",
     resumen: "The 17-tooth minimum explained with numbers, maximum ratio and a complete example.",
     minutos: 6,
     foto: "taller-eje-pinones.jpg",
