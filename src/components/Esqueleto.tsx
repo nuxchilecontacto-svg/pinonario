@@ -38,6 +38,8 @@ export function Esqueleto({ l, children }: { l: Idioma; children: React.ReactNod
     <html lang={l} data-theme="dark" className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: scriptTema }} />
+        {/* Estadísticas sin cookies (Umami); los clics marcados con data-umami-event se cuentan como eventos */}
+        <script defer src="https://cloud.umami.is/script.js" data-website-id={SITIO.umami} data-domains="pinonario.com" />
       </head>
       <body>
         <Cabecera nombre={SITIO.nombre} l={l} />

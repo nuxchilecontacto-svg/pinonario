@@ -174,7 +174,7 @@ function ModoCadena({ t, l }: { t: Textos; l: Idioma }) {
                     <Fila n={t.rodNom} v={`${f(c.cadena.d1)} mm${R ? ` (${t.dif} ${c.difRodillo >= 0 ? "+" : ""}${f(c.difRodillo)})` : ""}`} />
                     <Fila n={t.anchoInt} v={`${f(c.cadena.b1)} mm${c.difAncho !== undefined ? ` (${t.dif} ${c.difAncho >= 0 ? "+" : ""}${f(c.difAncho)})` : ""}`} />
                   </dl>
-                  <p className="nota"><a href={`${t.tablas}${c.cadena.id}/`}>{t.tablaDe} {codigo(c.cadena, l)}</a> · <a href={`${t.calc}?c=${c.cadena.id}&z=20`}>{t.calcular}</a></p>
+                  <p className="nota"><a href={`${t.tablas}${c.cadena.id}/`}>{t.tablaDe} {codigo(c.cadena, l)}</a> · <a href={`${t.calc}?c=${c.cadena.id}&z=20`} data-umami-event="identificar-cadena" data-umami-event-cadena={codigo(c.cadena, l)}>{t.calcular}</a></p>
                 </article>
               ))}
               {top.confianza !== "baja" && (() => {
@@ -257,7 +257,7 @@ function ModoPinon({ t, l }: { t: Textos; l: Idioma }) {
                     <Fila n={t.fondoEsp} v={`${f(c.esperadoFondo)} mm${F ? ` (${t.dif} ${(c.difFondo ?? 0) >= 0 ? "+" : ""}${f(c.difFondo ?? 0)})` : ""}`} marca={F ? (Math.abs(c.difFondo ?? 9) < 0.35 ? "ok" : "mal") : undefined} />
                     <Fila n={t.dp} v={`${f(calcularPinon(c.cadena, Z).dp)} mm`} />
                   </dl>
-                  <p className="nota"><a href={`${t.calc}?c=${c.cadena.id}&z=${Z}`}>{t.verTodo}</a></p>
+                  <p className="nota"><a href={`${t.calc}?c=${c.cadena.id}&z=${Z}`} data-umami-event="identificar-pinon" data-umami-event-cadena={codigo(c.cadena, l)} data-umami-event-z={Z}>{t.verTodo}</a></p>
                 </article>
               ))}
               {lista.length > 1 && lista[0].confianza === "media" && lista[1].confianza === "media" && (

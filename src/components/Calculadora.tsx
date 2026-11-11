@@ -286,7 +286,7 @@ export function Calculadora({
         </div>
 
         <div className="corte no-print">
-          <button className="btn-dxf" onClick={bajarDxf}>
+          <button className="btn-dxf" onClick={bajarDxf} data-umami-event="dxf-pinon" data-umami-event-cadena={cod} data-umami-event-z={zValido} data-umami-event-hileras={hileras}>
             <Icono n="descarga" size={18} /> {t.dxf}
           </button>
           <label className="check-mini">
@@ -294,7 +294,7 @@ export function Calculadora({
             {t.dxfRefs}
           </label>
           <p className="nota">{t.dxfNota(agujeroEf)}</p>
-          <button className="btn-dxf" onClick={() => setPlanoAbierto(true)}>
+          <button className="btn-dxf" onClick={() => setPlanoAbierto(true)} data-umami-event="plano-abrir" data-umami-event-cadena={cod} data-umami-event-z={zValido}>
             <Icono n="lapiz" size={18} /> {t.plano}
           </button>
           <p className="nota">{t.planoNota}</p>
@@ -445,15 +445,15 @@ function MenuFicha({ texto, t }: { texto: () => string; t: Textos }) {
   return (
     <div className="ficha no-print" ref={ref}>
       <div className="ficha-btns">
-        <button className="btn-prim" onClick={() => window.print()}><Icono n="impresora" size={18} /> {t.imprimir}</button>
+        <button className="btn-prim" onClick={() => window.print()} data-umami-event="ficha-imprimir"><Icono n="impresora" size={18} /> {t.imprimir}</button>
         <button className="btn-prim btn-mas" aria-label={t.mas} aria-haspopup="menu" aria-expanded={abierto} onClick={() => setAbierto((a) => !a)}>
           <Icono n="chevron" size={18} />
         </button>
       </div>
       {abierto && (
         <div className="menu" role="menu">
-          <button role="menuitem" onClick={() => copiar(window.location.href, t.enlaceCopiado)}><Icono n="enlace" size={17} /> {t.copiarEnlace}</button>
-          <button role="menuitem" onClick={() => copiar(texto(), t.medidasCopiadas)}><Icono n="copiar" size={17} /> {t.copiarMedidas}</button>
+          <button role="menuitem" onClick={() => copiar(window.location.href, t.enlaceCopiado)} data-umami-event="enlace-copiar"><Icono n="enlace" size={17} /> {t.copiarEnlace}</button>
+          <button role="menuitem" onClick={() => copiar(texto(), t.medidasCopiadas)} data-umami-event="medidas-copiar"><Icono n="copiar" size={17} /> {t.copiarMedidas}</button>
         </div>
       )}
       {aviso && <span className="toast" role="status"><Icono n="check" size={16} /> {aviso}</span>}

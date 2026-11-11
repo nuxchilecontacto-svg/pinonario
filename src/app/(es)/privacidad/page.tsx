@@ -14,7 +14,7 @@ export default function Privacidad() {
     <article className="guia">
       <span className="ceja">Legal</span>
       <h1>Política de privacidad</h1>
-      <p className="guia-meta">Última actualización: octubre de 2026</p>
+      <p className="guia-meta">Última actualización: noviembre de 2026</p>
       <div className="guia-cuerpo">
         <p className="entrada">
           {SITIO.nombre} ({SITIO.url.replace("https://", "")}) es un sitio de herramientas de cálculo gratuitas, operado por la
@@ -38,6 +38,11 @@ export default function Privacidad() {
           Usamos <b>Cloudflare Web Analytics</b> para saber cuántas personas visitan cada página. Este servicio no usa cookies, no
           identifica a las personas y no sigue tu actividad en otros sitios. Nuestro proveedor de hosting, Cloudflare, procesa
           además datos técnicos de conexión (como la dirección IP) para entregar el sitio y protegerlo de ataques.
+        </p>
+        <p>
+          También usamos <b>Umami</b> (umami.is), una herramienta de estadísticas sin cookies, para saber qué herramientas se usan: por
+          ejemplo, cuántas veces se descarga un DXF o se genera un plano, y para qué cadena y número de dientes. No guarda datos
+          personales ni tu dirección IP completa, no te identifica y no comparte información con terceros para publicidad.
         </p>
 
         <h2>Correos que nos envías</h2>

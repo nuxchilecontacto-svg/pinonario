@@ -215,8 +215,8 @@ export function PlanoPinon({
         <div className="plano-der">
           <div className="plano-vista" dangerouslySetInnerHTML={{ __html: svg }} />
           <div className="plano-btns">
-            <button className="btn-prim" onClick={imprimir}><Icono n="impresora" size={18} /> {t.pdf}</button>
-            <button className="btn-dxf" onClick={() => descargar(`${nombre}.dxf`, dxfPlano(plano))}><Icono n="descarga" size={18} /> {t.dxf}</button>
+            <button className="btn-prim" onClick={imprimir} data-umami-event="plano-pdf" data-umami-event-cadena={cod} data-umami-event-z={z} data-umami-event-hileras={hileras} data-umami-event-cubo={cubo} data-umami-event-chavetero={chaveta ? "si" : "no"}><Icono n="impresora" size={18} /> {t.pdf}</button>
+            <button className="btn-dxf" onClick={() => descargar(`${nombre}.dxf`, dxfPlano(plano))} data-umami-event="plano-dxf" data-umami-event-cadena={cod} data-umami-event-z={z} data-umami-event-hileras={hileras} data-umami-event-cubo={cubo} data-umami-event-chavetero={chaveta ? "si" : "no"}><Icono n="descarga" size={18} /> {t.dxf}</button>
           </div>
         </div>
       </div>

@@ -153,7 +153,7 @@ export function CalcCremallera({ l = "es" }: { l?: Idioma }) {
 
         <div className="vista vista-trans"><DibujoCremallera pts={muestra} c={c} nMuestra={Math.min(n, 6)} etiqueta={t.tramo} /></div>
         <div className="corte no-print">
-          <button className="btn-dxf" onClick={bajarDxf}><Icono n="descarga" size={18} /> {t.dxf(n)}</button>
+          <button className="btn-dxf" onClick={bajarDxf} data-umami-event="dxf-cremallera" data-umami-event-sistema={sistema}><Icono n="descarga" size={18} /> {t.dxf(n)}</button>
           <p className="nota">{t.dxfNota(`${L(c.largo)} ${U}`)}</p>
         </div>
       </section>
@@ -165,7 +165,7 @@ export function CalcCremallera({ l = "es" }: { l?: Idioma }) {
             <h2>{t.cremallera} {nombre} · {n} {t.dientes}</h2>
             <p>{t.largoDentado} {L(c.largo)} {U} · α = {dec(alfa)}°</p>
           </div>
-          <button className="btn-prim solo no-print" onClick={() => window.print()}><Icono n="impresora" size={18} /> {t.imprimir}</button>
+          <button className="btn-prim solo no-print" onClick={() => window.print()} data-umami-event="cremallera-imprimir"><Icono n="impresora" size={18} /> {t.imprimir}</button>
         </div>
 
         <div className="tarjetas">

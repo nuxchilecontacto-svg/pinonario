@@ -206,7 +206,7 @@ export function CalcEngranajes({ l = "es" }: { l?: Idioma }) {
           <DibujoEngranaje pts={vista} g={g} agujero={agujero} etiqueta={t.dibujo(zz)} />
         </div>
         <div className="corte no-print">
-          <button className="btn-dxf" onClick={bajarDxf}><Icono n="descarga" size={18} /> {t.dxf}</button>
+          <button className="btn-dxf" onClick={bajarDxf} data-umami-event="dxf-engranaje" data-umami-event-sistema={sistema}><Icono n="descarga" size={18} /> {t.dxf}</button>
           <p className="nota">{t.dxfNota}</p>
         </div>
       </section>
@@ -218,7 +218,7 @@ export function CalcEngranajes({ l = "es" }: { l?: Idioma }) {
             <h2>{t.engranaje} {nombre} · {t.z}{zz}{x ? ` · x = ${f(x, 2)}` : ""}</h2>
             <p>{t.recto}, α = {dec(alfa)}° · ISO 53{sistema === "dp" ? ` · ${t.mEquiv} ${f(m, 3)} mm` : ""}</p>
           </div>
-          <button className="btn-prim solo no-print" onClick={() => window.print()}><Icono n="impresora" size={18} /> {t.imprimir}</button>
+          <button className="btn-prim solo no-print" onClick={() => window.print()} data-umami-event="engranaje-imprimir"><Icono n="impresora" size={18} /> {t.imprimir}</button>
         </div>
 
         <div className="tarjetas">

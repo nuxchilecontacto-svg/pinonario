@@ -14,7 +14,7 @@ export default function Privacy() {
     <article className="guia">
       <span className="ceja">Legal</span>
       <h1>Privacy policy</h1>
-      <p className="guia-meta">Last updated: October 2026</p>
+      <p className="guia-meta">Last updated: November 2026</p>
       <div className="guia-cuerpo">
         <p className="entrada">
           {SITIO.nombre} ({SITIO.url.replace("https://", "")}) is a free calculation tool site operated by Ingema, a machine shop in
@@ -38,6 +38,11 @@ export default function Privacy() {
           We use <b>Cloudflare Web Analytics</b> to count how many people visit each page. It uses no cookies, does not identify people and
           does not follow you across other sites. Our hosting provider, Cloudflare, also processes technical connection data (such as IP
           addresses) to deliver the site and protect it from attacks.
+        </p>
+        <p>
+          We also use <b>Umami</b> (umami.is), a cookie-free analytics tool, to learn which tools get used: for example, how often a DXF is
+          downloaded or a drawing is created, and for which chain and tooth count. It stores no personal data or full IP address, does not
+          identify you and shares nothing with third parties for advertising.
         </p>
 
         <h2>Emails you send us</h2>
