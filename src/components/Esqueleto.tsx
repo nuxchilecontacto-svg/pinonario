@@ -11,6 +11,9 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--f-mono", display:
 // Tema oscuro por defecto; se recuerda la elección del visitante (antes de pintar, sin parpadeo)
 const scriptTema = `try{var t=localStorage.getItem("tema");document.documentElement.dataset.theme=t==="light"?"light":"dark"}catch(e){document.documentElement.dataset.theme="dark"}`;
 
+// Excluir de las estadísticas el propio equipo: abrir el sitio con ?no-contar (y ?contar para volver a contarlo)
+const scriptNoContar = `try{var q=location.search;if(/[?&]no-contar(=|&|$)/.test(q)){localStorage.setItem("umami.disabled","1");alert("Listo: las visitas de este navegador ya no se cuentan en las estadísticas.")}else if(/[?&]contar(=|&|$)/.test(q)){localStorage.removeItem("umami.disabled");alert("Listo: este navegador vuelve a contarse en las estadísticas.")}}catch(e){}`;
+
 const PIE = {
   es: {
     aria: "Todas las herramientas", cadena: "Cadena de rodillos", engranajes: "Engranajes", guiasTit: "Guías",
@@ -38,6 +41,7 @@ export function Esqueleto({ l, children }: { l: Idioma; children: React.ReactNod
     <html lang={l} data-theme="dark" className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: scriptTema }} />
+        <script dangerouslySetInnerHTML={{ __html: scriptNoContar }} />
         {/* Estadísticas sin cookies (Umami); los clics marcados con data-umami-event se cuentan como eventos */}
         <script defer src="https://cloud.umami.is/script.js" data-website-id={SITIO.umami} data-domains="pinonario.com" />
       </head>
