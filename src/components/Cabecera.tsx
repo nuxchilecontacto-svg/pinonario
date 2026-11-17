@@ -8,11 +8,12 @@ import { Icono } from "./Iconos";
 
 const NAV: Record<Idioma, { href: string; txt: string }[]> = {
   es: [
-    { href: "/", txt: "Calculadora" },
+    { href: "/", txt: "Piñones" },
     { href: "/transmision/", txt: "Largo de cadena" },
     { href: "/identificar/", txt: "Identificar" },
     { href: "/engranajes/", txt: "Engranajes" },
-    { href: "/cremalleras/", txt: "Cremalleras" },
+    { href: "/rodamientos/", txt: "Rodamientos" },
+    { href: "/chavetas/", txt: "Chavetas" },
     { href: "/tablas/", txt: "Tablas" },
     { href: "/guias/", txt: "Guías" },
   ],
@@ -21,7 +22,8 @@ const NAV: Record<Idioma, { href: string; txt: string }[]> = {
     { href: "/en/chain-length/", txt: "Chain length" },
     { href: "/en/identify/", txt: "Identify" },
     { href: "/en/gears/", txt: "Gears" },
-    { href: "/en/racks/", txt: "Racks" },
+    { href: "/en/bearings/", txt: "Bearings" },
+    { href: "/en/keyways/", txt: "Keys" },
     { href: "/en/tables/", txt: "Tables" },
     { href: "/en/guides/", txt: "Guides" },
   ],

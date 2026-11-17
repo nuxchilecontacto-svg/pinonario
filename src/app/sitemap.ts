@@ -1,12 +1,13 @@
 import type { MetadataRoute } from "next";
 import { CADENAS } from "@/lib/cadenas";
+import { RODAMIENTOS } from "@/lib/rodamientos";
 import { GUIAS_SLUG, RUTAS } from "@/lib/idioma";
 import { SITIO } from "@/lib/sitio";
 
 export const dynamic = "force-static";
 
 const PRIORIDAD: Record<string, number> = {
-  "/": 1, "/transmision/": 0.9, "/identificar/": 0.9, "/engranajes/": 0.9, "/cremalleras/": 0.8, "/tablas/": 0.8,
+  "/": 1, "/transmision/": 0.9, "/identificar/": 0.9, "/engranajes/": 0.9, "/cremalleras/": 0.8, "/rodamientos/": 0.9, "/chavetas/": 0.9, "/tablas/": 0.8,
   "/cadenas/": 0.7, "/guias/": 0.7, "/acerca/": 0.3, "/contacto/": 0.3, "/privacidad/": 0.2,
 };
 
@@ -17,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...RUTAS.map((r) => ({ ...r, prioridad: PRIORIDAD[r.es] ?? 0.5 })),
     ...GUIAS_SLUG.map((g) => ({ es: `/guias/${g.es}/`, en: `/en/guides/${g.en}/`, prioridad: 0.7 })),
     ...CADENAS.map((c) => ({ es: `/tablas/${c.id}/`, en: `/en/tables/${c.id}/`, prioridad: 0.6 })),
+    ...RODAMIENTOS.map((r) => ({ es: `/rodamientos/${r.codigo}/`, en: `/en/bearings/${r.codigo}/`, prioridad: 0.6 })),
   ];
   return pares.flatMap(({ es, en, prioridad }) => {
     const languages = { es: `${SITIO.url}${es}`, en: `${SITIO.url}${en}` };

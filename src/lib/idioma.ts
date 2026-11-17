@@ -11,6 +11,8 @@ export const RUTAS: { es: string; en: string }[] = [
   { es: "/identificar/", en: "/en/identify/" },
   { es: "/engranajes/", en: "/en/gears/" },
   { es: "/cremalleras/", en: "/en/racks/" },
+  { es: "/rodamientos/", en: "/en/bearings/" },
+  { es: "/chavetas/", en: "/en/keyways/" },
   { es: "/tablas/", en: "/en/tables/" },
   { es: "/cadenas/", en: "/en/chains/" },
   { es: "/guias/", en: "/en/guides/" },
@@ -36,6 +38,8 @@ export function rutaEn(ruta: string, destino: Idioma): string {
   if (fija) return fija[destino];
   const tabla = origen === "es" ? r.match(/^\/tablas\/([^/]+)\/$/) : r.match(/^\/en\/tables\/([^/]+)\/$/);
   if (tabla) return destino === "en" ? `/en/tables/${tabla[1]}/` : `/tablas/${tabla[1]}/`;
+  const rod = origen === "es" ? r.match(/^\/rodamientos\/([^/]+)\/$/) : r.match(/^\/en\/bearings\/([^/]+)\/$/);
+  if (rod) return destino === "en" ? `/en/bearings/${rod[1]}/` : `/rodamientos/${rod[1]}/`;
   const guia = origen === "es" ? r.match(/^\/guias\/([^/]+)\/$/) : r.match(/^\/en\/guides\/([^/]+)\/$/);
   if (guia) {
     const g = GUIAS_SLUG.find((x) => x[origen] === guia[1]);

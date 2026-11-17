@@ -441,3 +441,32 @@ select:focus, input:focus, button:focus-visible, .chip:has(input:focus-visible) 
   .plano-der { order: -1; }
 }
 @media print { .plano-dlg { display: none !important; } }
+
+/* ── Rodamientos y chavetas ── */
+.input-grande { font-size: 20px !important; font-weight: 700; font-family: var(--f-mono), monospace; letter-spacing: 0.02em; padding: 12px 14px !important; }
+.chip-txt { font: inherit; font-size: 12.5px; font-family: var(--f-mono), monospace; color: var(--acento); background: var(--acento-suave); border: 1px solid var(--acento-borde); border-radius: 999px; padding: 2px 9px; margin: 2px 2px; cursor: pointer; }
+.chip-txt:hover { background: var(--acento); color: var(--acento-ink); }
+.fila3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.lista-sufijos { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: var(--ink-2); }
+.tarjeta-ancha { grid-column: 1 / -1; }
+.tabla-equiv td, .tabla-equiv th { text-align: left; font-family: var(--f-mono), monospace; }
+.tabla-equiv td:first-child, .tabla-equiv th { font-family: inherit; }
+.res-tit { font-size: 18px; font-weight: 800; margin: 2px 0 14px; }
+.lista-rod { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+.lista-rod a { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel-2); text-decoration: none; }
+.lista-rod a:hover { border-color: var(--acento-borde); }
+.lista-rod b { font-size: 18px; font-family: var(--f-mono), monospace; color: var(--acento); }
+.lista-rod span { font-weight: 600; }
+.lista-rod small { color: var(--ink-3); }
+.ficha-rod { display: grid; grid-template-columns: minmax(0, 280px) minmax(0, 1fr); gap: 20px; align-items: center; margin: 18px 0 8px; }
+@media (max-width: 640px) { .ficha-rod { grid-template-columns: 1fr; } }
+.grupos-rod { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; align-items: start; }
+.tabla caption { caption-side: top; text-align: left; font-weight: 700; font-size: 13px; color: var(--ink-2); padding: 0 0 6px; }
+.d-bola { fill: var(--acento-suave); stroke: var(--acento); stroke-width: 1.3; }
+.d-chaveta { fill: var(--acento); fill-opacity: 0.35; stroke: var(--acento); stroke-width: 1.3; }
+@media (max-width: 1180px) { .top nav a { padding: 0 8px; font-size: 14px; } .top-in { gap: 10px 16px; } }
+@media (min-width: 561px) and (max-width: 1000px) {
+  .top nav { flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
+  .top nav::-webkit-scrollbar { display: none; }
+  .top nav a { flex: none; }
+}

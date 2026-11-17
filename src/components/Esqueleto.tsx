@@ -16,17 +16,17 @@ const scriptNoContar = `try{var q=location.search;if(/[?&]no-contar(=|&|$)/.test
 
 const PIE = {
   es: {
-    aria: "Todas las herramientas", cadena: "Cadena de rodillos", engranajes: "Engranajes", guiasTit: "Guías",
+    aria: "Todas las herramientas", cadena: "Cadena de rodillos", engranajes: "Engranajes y ejes", guiasTit: "Guías",
     links1: [["/", "Calculadora de piñones"], ["/transmision/", "Largo de cadena"], ["/identificar/", "Identificar cadena o piñón"], ["/tablas/", "Tablas de piñones"], ["/cadenas/", "Medidas de cadenas"]],
-    links2: [["/engranajes/", "Engranajes por módulo"], ["/cremalleras/", "Cremalleras"]],
+    links2: [["/engranajes/", "Engranajes por módulo"], ["/cremalleras/", "Cremalleras"], ["/rodamientos/", "Medidas de rodamientos"], ["/chavetas/", "Chavetas DIN 6885"]],
     links4: [["/acerca/", "Acerca de"], ["/contacto/", "Contacto"], ["/privacidad/", "Política de privacidad"], ["/en/", "English version"]],
     guias: GUIAS.map((g) => [`/guias/${g.slug}/`, g.titulo]),
     l1: "Herramienta gratuita para maestranzas y talleres.", l2: "Cálculos según ISO 606 / DIN 8187, ANSI B29.1 e ISO 53.",
   },
   en: {
-    aria: "All tools", cadena: "Roller chain", engranajes: "Gears", guiasTit: "Guides",
+    aria: "All tools", cadena: "Roller chain", engranajes: "Gears and shafts", guiasTit: "Guides",
     links1: [["/en/", "Sprocket calculator"], ["/en/chain-length/", "Chain length calculator"], ["/en/identify/", "Identify a chain or sprocket"], ["/en/tables/", "Sprocket tables"], ["/en/chains/", "Roller chain dimensions"]],
-    links2: [["/en/gears/", "Spur gear calculator"], ["/en/racks/", "Gear rack calculator"]],
+    links2: [["/en/gears/", "Spur gear calculator"], ["/en/racks/", "Gear rack calculator"], ["/en/bearings/", "Bearing size lookup"], ["/en/keyways/", "Keyway size calculator"]],
     links4: [["/en/about/", "About"], ["/en/contact/", "Contact"], ["/en/privacy/", "Privacy policy"], ["/", "Versión en español"]],
     guias: GUIAS_EN.map((g) => [`/en/guides/${g.slug}/`, g.titulo]),
     l1: "Free tools for machine shops and maintenance teams.", l2: "Calculations per ISO 606 / DIN 8187, ANSI B29.1 and ISO 53.",
